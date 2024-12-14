@@ -46,12 +46,6 @@ Assign a level of violence to each plot movie plot below. Respond with a diction
 
 We want the model to return a array of prediction, one prediction per plot. We specified a task and a return type using a function.
 
-<ul>
-    <li>Assess the maxim</li>
-    <li>Create a custom function to specify the return format of the model </li>
-    <li>Create a request for the model</li>
-</ul>
-
 <h4>Custom function for classification</h4>
 
 ```ruby

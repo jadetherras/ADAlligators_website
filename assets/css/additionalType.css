@@ -106,7 +106,7 @@ html { scroll-behavior: smooth; }
   /* Deep dive card ---------------------------------------------------*/
   
   .hover-container {
-    display: inline;
+    display:inline;
     position: relative;
     color: crimson;
     font-weight: bold;
