@@ -7,7 +7,7 @@ subtitle: Classified movies - would you say the same ?
 <h1 style="text-align:center">To LLM or not to LLM ? <br/> That is the question ! </h1>
 
 <p>
-<img style="float: left;padding-right: 20px;;padding-bottom: 20px;" class="gators" src="../../assets/img/caimaizie.png" alt="again a crocodile"/> Hi, i'm Caizieman the gamer crocodile ! <br/>
+<img style="float: left;padding-right: 20px;;padding-bottom: 20px;" class="gators" src="../assets/img/caimaizie.png" alt="again a crocodile"/> Hi, i'm Caizieman the gamer crocodile ! <br/>
 I don't trust this LLM, (even if Ada told me I can't label everything myself) should we try to see if we agree with him ?
 </p>
 
@@ -16,6 +16,9 @@ I don't trust this LLM, (even if Ada told me I can't label everything myself) sh
 You will do as the LLM ! read the summary and classify between violent and non-violent.
 <br/><br/>
 <div id="prediction-container">
+  <div style="text-align: center;">
+  <button class="butorange" id="replay-button" onclick="window.location.reload();">'I don't want to read this' button (reload)</button>'
+  </div>
   <p><strong>Content:</strong> <span id="content"><span class="loader"></span></span></p>
 
   <p><strong>Your Prediction:</strong></p>
@@ -42,12 +45,10 @@ You will do as the LLM ! read the summary and classify between violent and non-v
 
   // When a user makes a prediction, check if it matches the actual prediction.
   function makePrediction(userPrediction) {
-    console.log(randomPrediction)
-    console.log(randomPrediction.Prediction)
     document.getElementById("name").innerHTML = `<p style="text-align:center" ><strong>Name:</strong> <span>${randomPrediction.Movie_name}</span></p>`;
     const result = document.getElementById("predict");
 
-    if (userPrediction === randomPrediction.Prediction) {
+    if (userPrediction === parseInt(randomPrediction.Prediction)) {
       result.textContent = 'The LLM agree';
     } else {
       result.textContent = "Nah the LLM is wrong.. or you ?";

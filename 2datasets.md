@@ -6,7 +6,7 @@ subtitle: Don't add to many datasets, they said...
 
 <h1 style="text-align: center;">Why was one dataset (CMU) not sufficient for the investigation? </h1>
 
-<img style="float: left;padding-right: 20px;;padding-bottom: 20px;" class="gators" src="../../assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
+<img style="float: left;padding-right: 20px;;padding-bottom: 20px;" class="gators" src="../assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
 
 <p>
 Clearly, much of the relevant information concerning films (box office, summaries, release date, etc.) is already present in the CMU dataset. So what is the rationale behind Professeur Ada Reptking's (and our 5 students') idea of adding 3 additional datasets? The answers are manifold. 
