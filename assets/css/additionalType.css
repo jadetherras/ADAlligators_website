@@ -578,3 +578,113 @@ html { scroll-behavior: smooth; }
   .GraphContainer .peaceful {
     display: none;
   }
+
+
+  /* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: calc(6*30px);
+  height: 50px;
+  display: flex;
+  color: #079f2d;
+  filter: drop-shadow(30px 25px 0 currentColor) drop-shadow(60px 0 0 currentColor) drop-shadow(120px 0 0 currentColor);
+  clip-path: inset(0 100% 0 0);
+  animation: l13 2s infinite steps(7);
+}
+.loader:before {
+  content: "";
+  width: 30px;
+  height: 25px;
+  background: 
+    radial-gradient(farthest-side at right,currentColor 92%,#0000) left/20px 100% no-repeat,
+    radial-gradient(farthest-side,         currentColor 92%,#0000) right/17px 9px repeat-y;
+}
+@keyframes l13 {
+  100% {clip-path: inset(0 -30px 0 0)}
+}
+
+button {
+  font-family: "Merienda", cursive;
+  --clr: #F9F6EF;
+  --fg: #1f2020;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  padding: .7em 1.2em;
+  font-size: 1.4rem;
+  font-weight: 700;
+  width: max-content;
+  position: relative;
+  text-align: center;
+  &:before {
+    --clrs1: color-mix(in lab, var(--clr), #0000 50%);
+  --clrs2: color-mix(in lab, var(--clr), #0000 20%);
+  --clrs3: color-mix(in lab, var(--clr), #0000 60%);
+  --clrs4: color-mix(in lab, var(--clr), #0000 98%);
+    position: absolute;
+    content: '';
+    inset: 0;
+    padding: .1em;
+    border: 4px double var(--clr);
+    border-radius: .1em .2em / .5em .23em;
+    z-index: -1;
+    transition: .25s ease;
+    background: //var(--fg)
+      linear-gradient(178deg, 
+        var(--clrs1),
+        var(--clrs2) 20% 70%,
+        var(--clrs3) 90%,
+        var(--clrs4)) 0 0 / 100% .3rem;
+    background-clip: content-box;
+    
+    
+  }
+  transition: .1s linear;
+  &:active {
+    translate: .05em .1em;
+    filter: drop-shadow(-.1em -.1em .1em color-mix(in srgb, var(--clr), transparent 50%));;
+  }
+  &:active:before {
+    filter: url("#squiggly-0");
+  }
+  &:focus {
+    outline: 2px dashed color-mix(in srgb, var(--clr), transparent 90%);
+    outline-offset: .5rem;
+    border-radius: .25em;
+  }
+  filter: drop-shadow(.1em .1em .1em color-mix(in srgb, var(--clr), transparent 50%));
+}
+.butgreen {
+  --clr: hsl(80, 97%, 41%);
+  &::before{
+    filter: url("#squiggly-1");
+  }
+  
+}
+.butgreen:hover {
+  background-color: #00bd2f;
+}
+.butred{
+  --clr: hsl(320 75% 75%);
+  &:before {
+    filter: url("#squiggly-4");
+  }
+}
+.butred:hover {
+  background-color: #d00700;
+}
+
+.butorange{
+  --clr: hsl(0 75% 75%);
+  &:before {
+    filter: url("#squiggly-5");
+  }
+}
+
+.butorange:hover {
+  background-color: #e0970f;
+}
+
+/*https://codepen.io/ghaste/pen/QWPgxxO button for the playground*/
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Indie+Flower&family=Merienda:wght@300..900&display=swap')
+;
