@@ -30,13 +30,29 @@ You will do as the LLM ! read the summary and classify between violent and non-v
 </div>
 
 <script>
+  let agreeCount = localStorage.getItem("agreeCount");
+  let totalCount = localStorage.getItem("totalCount");
+  console.log(agreeCount)
+  if (isNaN(agreeCount)) {
+    agreeCount = 0;
+    totalCount = 0;
+    localStorage.setItem("agreeCount", agreeCount.toString());
+    localStorage.setItem("totalCount", totalCount.toString());
+    document.getElementById("replay").innerHTML = `<p>You did not play yet !</p>`;
+  } else {
+    agreeCount = parseInt(agreeCount);
+    document.getElementById("replay").innerHTML = `You agreed <span>${agreeCount}</span> times over <span>${totalCount}</span>`;
+  }
+
+
   // take the dataset
   const data = {{ site.data.playground | jsonify }};
   // Select a random line from the data
   function getRandomPrediction() {
     const randomIndex = Math.floor(Math.random() * data.length);
-    return data[randomIndex];
+    return data[randomIndex]; 
   }
+  
   // Display the plot
   function displayPrediction() {
     document.getElementById("content").textContent = randomPrediction.Plot;
@@ -50,11 +66,16 @@ You will do as the LLM ! read the summary and classify between violent and non-v
 
     if (userPrediction === parseInt(randomPrediction.Prediction)) {
       result.textContent = 'The LLM agree';
+      agreeCount = agreeCount +1;
     } else {
       result.textContent = "Nah the LLM is wrong.. or you ?";
     }
+    totalCount = totalCount +1;
 
-     document.getElementById("replay").innerHTML = '<button class="butorange" id="replay-button" onclick="window.location.reload();">Replay</button>';
+    document.getElementById("replay").innerHTML = `You agreed <span>${agreeCount}</span> times over <span>${totalCount}</span> <div><button class="butorange" id="replay-button" onclick="window.location.reload();">Replay</button> </div>`;
+    localStorage.setItem("agreeCount",agreeCount.toString());
+    localStorage.setItem("totalCount",totalCount.toString());
+
   }
 
   const randomPrediction = getRandomPrediction();
