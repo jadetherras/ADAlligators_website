@@ -688,3 +688,7 @@ button {
 /*https://codepen.io/ghaste/pen/QWPgxxO button for the playground*/
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Indie+Flower&family=Merienda:wght@300..900&display=swap')
 ;
+
+#pieChart {
+  display: none;
+}

@@ -791,7 +791,7 @@ nav.top-nav-short-permanent ~ header > .intro-header.big-img {
 #header-gh-btns {
   margin-bottom: 0.9375rem;
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   #header-gh-btns > iframe {
     display: block;
     margin-bottom: 0rem;
