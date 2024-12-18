@@ -73,13 +73,13 @@ blood: true
                     <div class="line line_type_bold"></div>
                     <div class="line"></div>
                     <article class="article article_columns_two">
-                        <div class="article__title article__title_font_racing">Heartbreaking new : Murder of a poor baby crocodile. Why is violence rizing in the city ?</div>
+                        <div class="article__title article__title_font_racing">Heartbreaking new : Murder of a poor baby crocodile. Why is violence rising in the city ?</div>
                         <div class="line line_type_short"></div>
                         <div class="article__content">
                             <strong class="article__author">By Ali Gator</strong>
                             <p>Twelfth murder in a week in the area 
                               Lagoon Swamp.</p><p>
-    Mr Crocco Odile called the police at 3am this morning after hearing a sudden thud. "I was confused. This is usually a very quiet neighbourhood, but this sound made my spine tingle. The police arrived too late: no criminals in sight, just the poor victim, no bruises, no blood, buried, no doubt. </p><p>
+    Mr Crocco Odile called the police at 3am this morning after hearing a sudden thud. "I was confused. This is usually a very quiet neighborhood, but this sound made my spine tingle. The police arrived too late: no criminals in sight, just the poor victim, no bruises, no blood, buried, no doubt. </p><p>
     What is more puzzling, however, is the increasing number of dead bodies in the city lately: not just in the Lagoon Swamp, not just in the Gator District, but everywhere. The authorities are calling for caution: don't go out alone at night, try to avoid crowds, report any suspicious activity. </p><p>
     We are looking for help to reduce violence in the city. The situation is dramatic. The government is ready to involve anyone who can help.</p>
                             <span class="article__continue">Continued on Page A18</span>
@@ -148,7 +148,7 @@ blood: true
 
 <img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
   <p>
-    CALM DONE Croco, you almost look like a hot-blooded ! You can't just claim a correlation because your gut tell you so ! <br/>
+    CALM DOWN Croco, you almost look like a hot-blooded ! You can't just claim a correlation because your gut tell you so ! <br/>
     Enough crocodile tears ! let's be Pragmatic : you have to perform data analysis, and I will help you, if you brings me some datasets and a coffee.
   </p> 
   <p>
@@ -292,14 +292,16 @@ Interestingly, the model tends to be more extreme than humans, labelling half of
 <h4>Validation of the classification</h4>
 
 <p>
-Now that the films are classified, we want to take a closer look at them before feeding them into our research model of the correlation between real and cinematic violence. <br/>
-As a first step, we perform a 2-dimensional PCA regression on the entire dataset and represent the two main components. We see clusters! In fact, films dominated by emotions such that: kill, negative_emotion, death and crime are most correlated on the upper part of the plot. The lower part, on the other hand, is dominated by films of categories such that: children, party, home, wedding, family. <br/>
+Now that the films are classified, we want to take a closer look at them before feeding them into our research model of the correlation between real and cinematic violence. "But how ?" ask Gatson.<br/>
+As a first step, we perform a 2-dimensional PCA regression on the entire dataset and represent the two main components. 
+
+<div class="flourish-embed flourish-scatter" data-src="visualisation/20754617"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20754617/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
+
+We see clusters! In fact, films dominated by emotions such that: kill, negative_emotion, death and crime are most correlated on the upper part of the plot. The lower part, on the other hand, is dominated by films of categories such that: children, party, home, wedding, family. <br/>
 Clearly, the two types of films seem to be quite distinct: on the one hand, films that we can classify as violent and, on the other hand, peaceful films. <br/>
 
-Armed with this information, we move on to the analysis of the films as categorised by Chat-GPT-4o mini, hoping to validate their classification. <br/>
-For this, we extract the ten most represented categories in both categories. We clearly see a difference: violent films are categorised by kill, death, fight, war, etc.; whereas non-violent films deal with topics such as: travelling, communication, friends, wedding, etc. <br/>
-For a more visual representation, we choose 10 films at random, for which we represent the percentage for each of the 10 most present categories.
-</p>
+Armed with this information, we move on to the analysis of the films as categorized by Chat-GPT-4o mini, hoping to validate their classification. <br/>
+For this, we extract the ten most represented categories in both categories. 
 
 <div class="GraphContainer">
   <label class="switch">
@@ -318,7 +320,9 @@ For a more visual representation, we choose 10 films at random, for which we rep
   </div>
 </div>
 
-<div class="flourish-embed flourish-scatter" data-src="visualisation/20754617"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20754617/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
+We clearly see a difference: violent films are categorized by kill, death, fight, war, etc.; whereas non-violent films deal with topics such as: travelling, communication, friends, wedding, etc. <br/>
+For a more visual representation, we choose 10 films at random, for which we represent the percentage for each of the 10 most present categories.
+</p>
 
 <h4>A look into violent movies</h4>
 
@@ -366,13 +370,38 @@ However, some genre are present in the two list. This is expected, because some 
   </div>
 </div>
 
-This analysis is limited. A lot of genre here are really "niche" but we can still see a clear tendancy. For violent movie, we have genre such as psychological horror, wars or hardcore pornography. For non-violent movies we have travel, children's, education, fitness or journalism...
+This analysis is limited. A lot of genre here are really "niche" but we can still see a clear tendency. For violent movie, we have genre such as psychological horror, wars or hardcore pornography. For non-violent movies we have travel, children's, education, fitness or journalism...
 <h4>What does the time say ?</h4>
 
-This is time to try to answers to our first question : are violence movies more present today ? 
+This is time to try to answers to our first question : are violence movies more present today ?
 
+Let's take a look at the distribution of violent movies in time.
 <div class="flourish-embed flourish-chart" data-src="visualisation/20790058"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20790058/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+
+<p>
+If we look only the number of violent movie, we can easily said : yes, the number of increase ! However, there is a trick there. Look now at the total number of movie release per year. The number of violent movie and the total number of movie increase following the 
+same pattern. 
+</p>
+<div class="flourish-embed flourish-chart" data-src="visualisation/20853357"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20853357/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+<p>
+Look at the ratio of violent movies over all the movies. Surprise, the ratio do increase, but really slowly. We can say that there is in general more violent movie per year between 1970 and 2013 than between 1913 and 1940. There is a sudden increase in the 70', with no return to the precedent ratio afterward.
+We also observe a oscillation between period with relatively high and low number of violent movies. 
+Fo example, the ratio drop around 1917, 1921, 1929, 1937. More recently, there is a drop in 1979 and a spike in 1981. Outliers at the border are due to the low number of movie data.
+</p>
+
+<p>
+  Here for the years, but within a year, is there a pattern ? When are the violent movie release ? </p>
 <div class="flourish-embed flourish-chart" data-src="visualisation/20791318"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20791318/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+
+<p>
+  Similarly, the violent movie trend follow the total movie trend. In general, more movies are release at the beginning of september (the beginning of the academic year !) and at the end and beginning of the year (for christmas and to start the new year!).
+  Less movies are release in the summer. Does people watch movie during hot holidays ?
+  Additionally, the ratio of violent movie is constant across the weeks.
+</p>
+
+<p>
+  To end this analysis, you can watch the distribution of violent movies release and total movie release within the years !
+</p>
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/20790742"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20790742/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 <h4>Define a metric : Box office revenue </h4>
