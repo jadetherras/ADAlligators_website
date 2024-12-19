@@ -116,5 +116,16 @@ completion = self.client.chat.completions.create(
 
 <h1>Empath model</h1>
 
+<p>
+In the first iterations, we used lists of manually selected words to analyse our plots. The level of violence in the movies would depend on how many times the words in the lists were counted in the summary. <br/>
+Two problems arise from this method: 
+<ul>
+    <li>Subjectivity of the list: the definition depends on one's knowledge of the english language, of one's perception of violence, etc. </li>
+    <li>Non-treatment of lemmas: word variations such as "being" --> "be", etc. are not always treated. Their treatment depends on the specification (or not) in the list itself. Homogeneity is therefore lacking.</li>
+</ul>
+To solve these problems, we decided to use the Empath model in combination with a pre-treatment of the summaries. <br/>
+We lemmatize, remove the stop-words and then look at the categories most present in each summary. This allows us also to evaluate the correctness of the LLM: we make sure that the categories most represented in violent movies are indeed violent ones and vice-versa. 
+</p>
+
 <h1>Auto-regressive distributed lack model</h1>
  
