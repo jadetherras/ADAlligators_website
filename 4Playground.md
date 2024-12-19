@@ -9,8 +9,9 @@ subtitle: Classified movies - would you say the same ?
 <span id="loader" class="loader"></span>
 <canvas id="pieChart" width="150" height="150"></canvas>
 <p>
-<img style="float: left;padding-right: 20px;;padding-bottom: 20px;" class="gators" src="../assets/img/caimaizie.png" alt="again a crocodile"/> Hi, i'm Caizieman the gamer crocodile ! <br/>
-I don't trust this LLM, (even if Ada told me I can't label everything myself) should we try to see if we agree with him ?
+<img style="float: left;padding-right: 20px;;padding-bottom: 20px;" class="gators" src="../assets/img/caimaizie.png" alt="again a crocodile"/> Hi, I'm Caizieman the gamer crocodile ! <br/>
+I don't trust this LLM, (even if Ada Reptking told me I can't label everything myself). <br/>
+Should we try to see if we agree with him ?
 </p>
 
 <h3>Time for the battle !</h3>
@@ -19,7 +20,7 @@ You will do as the LLM ! read the summary and classify between violent and non-v
 <br/><br/>
 <div id="prediction-container">
   <div style="text-align: center;">
-  <button class="butorange" id="replay-button" onclick="window.location.reload();">'I don't want to read this' button (reload)</button>'
+  <button class="butorange" id="replay-button" onclick="window.location.reload();">"I don't want to read this" button (reload)</button>
   </div>
   <p><strong>Content:</strong> <span id="content"><span class="loader"></span></span></p>
 
@@ -190,11 +191,11 @@ You will do as the LLM ! read the summary and classify between violent and non-v
       const result = document.getElementById("predict");
 
       if (userPrediction === parseInt(randomPrediction.Prediction)) {
-        result.textContent = 'The LLM agree';
+        result.textContent = 'The LLM agrees';
         document.getElementById("replay").innerHTML = `People agreed <span>${stats.nbAgree + 1}</span> times over <span>${stats.nbPlay + 1} games !</span> <div><button class="butorange" id="replay-button" onclick="window.location.reload();">Replay</button> </div>`;
         updateStats(true);
       } else {
-        result.textContent = "Nah the LLM is wrong.. or you ?";
+        result.textContent = "Nah the LLM is wrong... or you are?";
         document.getElementById("replay").innerHTML = `People agreed <span>${stats.nbAgree}</span> times over <span>${stats.nbPlay + 1} games !</span> <div><button class="butorange" id="replay-button" onclick="window.location.reload();">Replay</button> </div>`;
         updateStats(false);
       }

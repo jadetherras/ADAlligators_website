@@ -1,17 +1,17 @@
 ---
 layout: page
 title: Models & methods 
-subtitle: what we used, how and why
+subtitle: What we used, how and why
 ---
 
 <h1>Sentiment analysis</h1>
 <h2>A first naive method for classification</h2>
 
-<p>In a naive trial for classification, we used a pretrained <a href="https://huggingface.co/bhadresh-savani/distilbert-base-uncased-emotion"> DistilBert sentiment analysis model</a> to extract sentiments from the movie's plots and trained a logistic regression on the result. As logistic regression is a supervised machine learning method, we trained only on a subset of the human labelled data and tested the model on a validation set. The method performed poorly (30% accuracy).</p>
+<p>In a naive trial for classification, we used a pretrained <a href="https://huggingface.co/bhadresh-savani/distilbert-base-uncased-emotion"> DistilBert sentiment analysis model</a> to extract sentiments from the movies' plots and trained a logistic regression on the result. As logistic regression is a supervised machine learning method, we trained it only on a subset of the human labelled data and tested the model on a validation set. The method performed poorly (30% accuracy).</p>
 
 <p>However, we reused the model after the LLM classification, to analyze disparities in the result depending on the classification.</p>
 
-<p>The model return a probability distribution across 6 sentiments :
+<p>The model returns a probability distribution across 6 sentiments :
 <ul>
 <li>Sadness</li>
 <li>Joy</li>
@@ -21,41 +21,44 @@ subtitle: what we used, how and why
 <li>Surprise</li>
 </ul></p>
 
-<p>(The following graph is huge, it can crash. Dont hesitate to refresh if needed)</p>
+<p>The graph below shows the distribution of each sentiment per category (violent vs non-violent). Each point is a movie, red if violent and blue if peaceful. Due to the very high density of points, the boxplot was added for each pair (sentiment-classification). <br/> 
+Note: this graph is huge, it can crash. Dont hesitate to refresh the page if needed. </p>
 <div class="flourish-embed flourish-scatter" data-src="visualisation/20864115"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20864115/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
 
-<p>No surprise the model performed poorly ! First, the model is prompt to give high anger score in general. Using all the classified data, we can see that violent movie tends to have a higher anger score and fear score, where peaceful movie tends to have a higher Joy score, and interestingly a higher sadness score (can be explained by the sharing percentage). However, the boxplot largely overlaps, we can't classify the data only with this metrics : The concept of violence is complex and isn't caught by this model. !</p>
+<p>No surprise the model performed poorly ! First, the model tends to give high scores for anger in general, for both violent and non-violent movies. Using all the classified data, we can see that violent movies tend to have higher anger and fear scores, where peaceful movies tend to have a slightly higher joy score, and interestingly a higher sadness score. The latter can be explained by the shared percentage, whcih is close for both movies. <br/>
+However, the most important conclusion we can draw from this plot is that boxplots largely overlap. We threfore can't classify the data only with this metric. The concept of violence is too complex and isn't captured by this model!</p>
 
 <h1 id="#LLM">LLM for violence classification</h1>
 
 <p>
-Movies are classified between different violence level using a custom prompt and function for the model <a target="_blank" href="https://platform.openai.com/docs/models#gpt-4o-mini">GPT-4o mini</a> from OpenIA. 
+The model described previously was not working so well... hence we upgraded! <br/>
+We used a custom prompt and function for the model <a target="_blank" href="https://platform.openai.com/docs/models#gpt-4o-mini">GPT-4o mini</a> from OpenIA. Movies are classified between different violence levels (binary or ternary model).
 </p>
 
 <p>
-For the data, we create batch by concatenating multiple plots by adding a separator with the plot number between each plot. Testing reveal that the model tends to forget some plots if to much are given at the time. We stated on batch on 10 movies, taking care of the maximum tokens number of the model. 
+For the data, we create batches by concatenating multiple plots and adding a separator with the plot number between each plot. Testing reveals that the model tends to forget some plots if too many are given at the time. We stated on batches of 10 movies, taking care of the maximum tokens' number of the model. 
 </p>
 
-For the model, we processed as follow :
+For the model, we processed as follows :
 <ul>
-    <li>Create a custom violence scale , a set and instruction and provide examples</li>
-    <li>Create a custom function to specify the return format of the model </li>
+    <li>Created a custom violence scale, a set and instructions and provided examples to the LLM</li>
+    <li>Created a custom function to specify the return format of the model </li>
     <li>Create a request for the model</li>
 </ul>
 
-We followed the <a target="_blank" href="https://platform.openai.com/docs/guides/prompt-engineering">prompt engineering guide</a> of openIA to design the scale and examples.
+We followed the <a target="_blank" href="https://platform.openai.com/docs/guides/prompt-engineering">prompt engineering guide</a> of OpenIA to design the scale and examples:
 
-<details><summary>Prompt</summary>
+<details><summary>Prompt (click to know more) </summary>
 <code style="color: red">
   ### Violence scale : ### <br/><br/>
 
   - **Peaceful**: The text describes no physical or psychological violence. There are no aggression, conflict, or harm to people or animals. Suitable for all audiences.<br/>
   - **Mild**: The level of violence is medium or uncertain. There might be moments of tension or mild conflict, such as arguments. Mild action or suspense is allowed.<br/>
-  - **Violent**: The text describe extreme physical or psychological violence, such as physical aggression, conflict, or harm. Scenes may include fighting, injury, rape. It a prominent feature of the film.<br/><br/>
+  - **Violent**: The text describes extreme physical or psychological violence, such as physical aggression, conflict, or harm. Scenes may include fighting, injury, rape. It is a prominent feature of the film.<br/><br/>
 
 ### Instructions ### <br/><br/>
-Assign a level of violence to each plot movie plot below. Respond with a dictionary where the keys are the plot numbers (e.g., 'plot1', 'plot2') and the values are the levels of violence ('Peaceful', 'Mild', 'Violent')</code></details>
-<details><summary>Example</summary>
+Assign a level of violence to each movie plot below. Respond with a dictionary where the keys are the plot numbers (e.g., 'plot1', 'plot2') and the values are the levels of violence ('Peaceful', 'Mild', 'Violent')</code></details>
+<details><summary>Example (click to know more)</summary>
  <code style="color: red">
     Here are some examples for each label : <br/>
         - **Peaceful**: plot1 :'norma and malcolm miochaels are a middle-aged married couple who are in the midst of a midlife crisis. both decide to separate and begin their lives anew away from each other. however, problems ensue once they discover that they are no longer as young as they used to be.'
@@ -66,7 +69,7 @@ Assign a level of violence to each plot movie plot below. Respond with a diction
         plot2:'newlywed carl  goes to war where he endures major suffering. back home, wife pauli  starves, becomes a prostitute to survive, and their baby dies.'
   </code></details>
 
-We want the model to return a array of prediction, one prediction per plot. We specified a task and a return type using a function.
+We want the model to return an array of predictions, one prediction per plot. We specified a task and a return type using a function.
 
 <h4>Custom function for classification</h4>
 
