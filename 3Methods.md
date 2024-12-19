@@ -4,6 +4,28 @@ title: Models & methods
 subtitle: what we used, how and why
 ---
 
+<h1>Sentiment analysis</h1>
+<h2>A first naive method for classification</h2>
+
+<p>In a naive trial for classification, we used a pretrained <a href="https://huggingface.co/bhadresh-savani/distilbert-base-uncased-emotion"> DistilBert sentiment analysis model</a> to extract sentiments from the movie's plots and trained a logistic regression on the result. As logistic regression is a supervised machine learning method, we trained only on a subset of the human labelled data and tested the model on a validation set. The method performed poorly (30% accuracy).</p>
+
+<p>However, we reused the model after the LLM classification, to analyze disparities in the result depending on the classification.</p>
+
+<p>The model return a probability distribution across 6 sentiments :
+<ul>
+<li>Sadness</li>
+<li>Joy</li>
+<li>Love</li>
+<li>Anger</li>
+<li>Fear</li>
+<li>Surprise</li>
+</ul></p>
+
+<p>(The following graph is huge, it can crash. Dont hesitate to refresh if needed)</p>
+<div class="flourish-embed flourish-scatter" data-src="visualisation/20864115"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20864115/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
+
+<p>No surprise the model performed poorly ! First, the model is prompt to give high anger score in general. Using all the classified data, we can see that violent movie tends to have a higher anger score and fear score, where peaceful movie tends to have a higher Joy score, and interestingly a higher sadness score (can be explained by the sharing percentage). However, the boxplot largely overlaps, we can't classify the data only with this metrics : The concept of violence is complex and isn't caught by this model. !</p>
+
 <h1 id="#LLM">LLM for violence classification</h1>
 
 <p>
@@ -91,8 +113,6 @@ completion = self.client.chat.completions.create(
     function_call={"name": "Assign_violence_level"},
 )
 ```
-
-<h1>Sentiment analysis</h1>
 
 <h1>Empath model</h1>
 
