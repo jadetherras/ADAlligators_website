@@ -21,9 +21,10 @@ subtitle: What we used, how and why
 <li>Surprise</li>
 </ul></p>
 
+
 <p>The graph below shows the distribution of each sentiment per category (violent vs non-violent). Each point is a movie, red if violent and blue if peaceful. Due to the very high density of points, the boxplot was added for each pair (sentiment-classification). <br/> 
-Note: this graph is huge, it can crash. Dont hesitate to refresh the page if needed. </p>
-<div class="flourish-embed flourish-scatter" data-src="visualisation/20864115"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20864115/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
+
+<img style="margin: auto;padding-bottom: 10px;padding-top: 10px;"  src="../assets/img/sentimentANALYSIS.png" alt="histograme"/>
 
 <p>No surprise the model performed poorly ! First, the model tends to give high scores for anger in general, for both violent and non-violent movies. Using all the classified data, we can see that violent movies tend to have higher anger and fear scores, where peaceful movies tend to have a slightly higher joy score, and interestingly a higher sadness score. The latter can be explained by the shared percentage, whcih is close for both movies. <br/>
 However, the most important conclusion we can draw from this plot is that boxplots largely overlap. We threfore can't classify the data only with this metric. The concept of violence is too complex and isn't captured by this model!</p>
