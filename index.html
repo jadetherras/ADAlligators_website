@@ -288,23 +288,28 @@ The last model end up with <b>66.38% accuracy</b> on the validation set. <br/>
 At both extremes, the model successes to label the data most of the time, with some mislabelling to "Mild". Out of 116 movies, only 2 have a opposite labelling (violent to peaceful). 
 Interestingly, the model tends to be more extreme than humans, labelling half of the mild category as peaceful or violent. For the purposes of the following analysis, we will remove the mild category.
 <br/><br/>
-"The model performs relatively well. However, we saw that this labelling is subjective. To assess our classification, we will analyse the results using the Empath model." proposes Ada. 
+"The model performs relatively well. However, we saw that this labelling is subjective. To assess the correctness of our classification, we will analyse the results using the Empath model from the Empath package in Python.", suggests Ada. <br/>
+"What is the Empath package? What does it do?", asks Crocolock. <br/>
+"The Empath package is a tool that utilizes a pre-trained model, built using techniques like word embeddings, to group words into meaningful categories based on their context. We will use it to scan through movie summaries and verify that movies labelled as violent by the LLM are indeed dominated by violent categories (I expect to see crime, anger, kill, etc.). It’s a quick a way to figure out how much violent language pops up in a text without doing all the heavy lifting yourself. We avoid having to craft lists of violent words ourselves, introducing biases and incoherences (as I did once in the past...). 
 </p>
 
-<h4>Validation of the classification</h4>
+<h4>Categorisation of the classification: are movies correctly grouped?</h4>
 
 <p>
-Now that the films are classified, we want to take a closer look at them before feeding them into our research model of the correlation between real and cinematic violence. "But how ?" ask Gatson.<br/>
-As a first step, we perform a 2-dimensional PCA regression on the entire dataset and represent the two main components. 
+Ada returns back to her desk and decides to perform some preliminary analysis. First, she looks at the first two components of a 10-dimensional PCA regression run on the entire datasets. Each colour represents the main category brought up by the movie, amongst the 10 categories appearing most across the entire dataset. <br/>
+"Can we see clusters?", she mumbles to herself. <br/>
 
 <div class="flourish-embed flourish-scatter" data-src="visualisation/20754617"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20754617/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
 
 </p><p>
-We see clusters! In fact, films dominated by emotions such that: kill, negative_emotion, death and crime are most correlated on the upper part of the plot. The lower part, on the other hand, is dominated by films of categories such that: children, party, home, wedding, family. <br/>
-Clearly, the two types of films seem to be quite distinct: on the one hand, films that we can classify as violent and, on the other hand, peaceful films. <br/>
+We clearly can! In fact, films dominated by emotions such that: kill, negative_emotion, death and crime are most correlated on the upper part of the plot. The lower part, on the other hand, is dominated by films of categories such that: children, party, home, wedding, family. <br/>
+Clearly, the two types of films seem to be quite distinct: on the one hand, films that we can classify as violent and, on the other hand, peaceful films.<br/>
 </p><p>
-Armed with this information, we move on to the analysis of the films as categorized by Chat-GPT-4o mini, hoping to validate its classification. <br/>
-For this, we extract the ten most represented categories in both groups. <br/>
+Armed with this information, we move on to the analysis of the films as classified by Chat-GPT-4o mini, hoping to validate their grouping into the two classes: violent and non-violent. <br/>
+For this, we extract the ten most represented categories in both groups. Violent movies are dominated by: crime, kill, family, death, negative_emotion, fight, war, children, weapon and traveling. Apart from the last emotion, which is questionably related to the sphere of violence, all others are clearly closely attached to gruesome contexts. <br/>
+Non-violent movies bring up: family, children, party, home, wedding, speaking, traveling, communication, celebration, friends. Clearly, much more positively inclined categories. We also notice that traveling is present once again. Hence, we conclude it just be a recurrent theme across all types of movies. <br/>
+"True, who doesn't dream of visiting the world?", wonders Ada. <br/>
+As last consideration, we look at 10 randomly sampled movies from both groups. When we look at the violent movies, we immediately see that the violent categories cited above describe as much as 35% of the content. Considering that the empath package has 200 categories, we are satisfied with this finding. We also look at the top 10 non-violent categories' representation in the same 10 movies. We see that they reach at most 25%. Hence, non-violent categories are indeed overall less represented in violent movies than the violent ones! <br/>
 </p>
 <div class="GraphContainer">
   <label class="switch">
@@ -346,7 +351,10 @@ For this, we extract the ten most represented categories in both groups. <br/>
     </div>
   </div>
 </div>
-
+<p>
+Ada continued for several hours to look at individual movies in the same was as described above. She is confident: movies from either group are coherent with the categories they depict. She points at some specific cases, such as Muder-Set-Pieces (violent group) which has no peaceful category at all (from the 10 most represented), but nearly totally 35% from the violent ones. "This movie is surely correctly classified! Look here Crocolock.". <br/>
+For completeness, we also perform the same analysis for movies grouped as non-violent. We reach the same conclusion: non-violent categories are more present in these movies than the violent categories. We are satisfied (and Ada too), so let's move on!
+</p>
 
 
 <h4>A look into violent movies</h4>
@@ -395,6 +403,16 @@ However, some genres are present in the two lists. This is expected, because som
 </div>
 
 This analysis is limited. A lot of genre here are really "niche" but we can still see a clear tendency. For violent movies, we have genres such as psychological horror, wars or hardcore pornography. For non-violent movies we have travel, children's, education, fitness or journalism...
+
+<h4>Bag of Words ?</h4>
+
+<p>
+Seeing all these analysis, Crocolock had an idea: "Can we have a look at the words themselves? Just as a side quest, I would like to see if the words used to describe violence are the same as those we use on an everyday basis.".<br/>
+This question granted him a side-eye glance from Ada. But there she goes.<br/>
+We can see her results below. There are indeed some differences, we notice the words: kill, murder, follow, etc. in violent movies and love, home, etc. for peaceful movies. <br/>
+"Can we move on?", asks Ada. <br/>
+"Yes, please?", returns Crocolock with a big smile. 
+</p>
 
 <div class="GraphContainer">
   <label class="switch">
