@@ -203,7 +203,7 @@ ARDL_model = ARDL(
 
 <p>We tried different ways of standardizing/normalizing the exogenous and endogenous variables before applying the model on them. We describe all approaches below and present the corresponding results for the coefficients. Since the purpose of the time-fixed effects in our model is purely to purge the exogenous variable from time-fixed confounding factors, we do not include their coefficients in the results here. Due to the high number of time-fixed effect factors (one for every two weeks in the data), this would also not be an efficient use of space on this page. If interested, you can analyze them using the code provided in the <i>results.ipynb</i>.</p>
 
-<li><b>Naïve approach:</b> In the first approach, we do not normalize and use the following values:
+<li><b>Naive approach:</b> In the first approach, we do not normalize and use the following values:
     <ul>
         <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
         <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
@@ -211,9 +211,22 @@ ARDL_model = ARDL(
     </ul>
 </li>
 
- <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
- 
-<object data="_data/Model_1_with_TFE_all_states.html" width="100%" height="500px"></object>
+<p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
+
+<!-- Table here -->
+
+<p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
+
+<!-- Table here -->
+
+<p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
+
+<!-- Table here -->
+
+<p> For South Carolina on the full data available and without time-fixed effects we get:</p>
+
+<!-- Table here -->
+
 
 <details>
     <summary>Other intermediate ARDL models...(if interested, click here)</summary>
@@ -225,6 +238,8 @@ ARDL_model = ARDL(
                 <li><b>\( V_i \):</b> Number of all criminal offenses registered in week \( i \) divided by the number of all criminal offenses registered in that year</li>
             </ul>
         </li>
+
+
 
         <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.
             <ul>
