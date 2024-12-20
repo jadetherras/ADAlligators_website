@@ -759,6 +759,7 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
 <h2>Put it all together : a correlation? </h2>
 
 <img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
+<<<<<<< HEAD
 <p>
   Now that we have all this, can we feed it into a simple linear regression model? No, of course not. The box office revenue of violent movies and the count of violent movie releases are not the only two independent variables. <br/>
   Moreover, we have a very high number of possible confounding factors, and on the other hand the violence level averaged over an entire year might not provide interesting details; due to its stability. We therefore aim for a very short timestep: one week . <br/>
@@ -767,6 +768,11 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
 </p>
 <p class="formula" style="margin: auto;"></p>
 <div class="hover-container" >
+=======
+<div align="center">
+<div class="hover-container">
+  <p class="formula" align="center">
+>>>>>>> 0353764f5f03334c98fa619749661060e50f7d47
     \[
     V_t = \alpha + \sum_{i=t-1}^{t-\text{lag}_{\text{ar}}} \beta_i \cdot V_i + 
     \sum_{j=t}^{t-\text{lag}_{\text{d}}} \gamma_j \cdot X_j + 
@@ -784,6 +790,7 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
           </div>
     </a>
 </div>
+<<<<<<< HEAD
 </p>
 <p>
   (Pssst, for more on the model click on the formula!) <br/>
@@ -842,6 +849,9 @@ width="100%"
 height="250px"
 frameborder="0"></iframe>
  </div>
+=======
+</div>
+>>>>>>> 0353764f5f03334c98fa619749661060e50f7d47
 
 <p>
  <b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues: 
