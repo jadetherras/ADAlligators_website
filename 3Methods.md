@@ -211,42 +211,7 @@ ARDL_model = ARDL(
     </ul>
 </li>
 
-<p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
-
-<div style="width: 99%; margin: auto;">
-  <iframe src="{{ '../assets/table/Model_1_with_TFE_all_states.html' | relative_url }}" 
-          width="100%" 
-          height="250px"
-          frameborder="0">
-  </iframe>
-</div>
-
-<p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
-
- <div style="width: 99%; margin: auto;">
-<iframe src="{{ '../assets/table/Model_1_with_TFE_single_state.html' | relative_url }}" 
-width="100%"
-height="250px"
-frameborder="0"></iframe>
- </div>
-
-<p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
-
-<div style="width: 99%; margin: auto;">
-<iframe src="{{ '../assets/table/Model_1_without_TFE_all_states.html' | relative_url }}" 
-width="100%"
-height="250px"
-frameborder="0"></iframe>
- </div>
-
-<p> For South Carolina on the full data available and without time-fixed effects we get:</p>
-
-<div style="width: 99%; margin: auto;">
-<iframe src="{{ '../assets/table/Model_1_without_TFE_single_state.html' | relative_url }}" 
-width="100%"
-height="250px"
-frameborder="0"></iframe>
- </div>
+<p>Result are in the main page !</p>
 
 <details>
     <summary>Other intermediate ARDL models...(if interested, click here)</summary>
@@ -302,46 +267,7 @@ frameborder="0"></iframe>
     </ul>
 </li>
 
-<p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
-
-<div style="width: 99%; margin: auto;">
-  <iframe src="{{ '../assets/table/Model_5_with_TFE_all_states.html' | relative_url }}" 
-          width="100%" 
-          height="250px"
-          frameborder="0">
-  </iframe>
-</div>
-
-<p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
-
-<div style="width: 99%; margin: auto;">
-  <iframe src="{{ '../assets/table/Model_5_with_TFE_single_state.html' | relative_url }}" 
-          width="100%" 
-          height="250px"
-          frameborder="0">
-  </iframe>
-</div>
-
-<p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
-
-<div style="width: 99%; margin: auto;">
-  <iframe src="{{ '../assets/table/Model_5_without_TFE_all_states.html' | relative_url }}" 
-          width="100%" 
-          height="250px"
-          frameborder="0">
-  </iframe>
-</div>
-
-<p> For South Carolina on the full data available and without time-fixed effects we get:</p>
-
-<div style="width: 99%; margin: auto;">
-  <iframe src="{{ '../assets/table/Model_5_without_TFE_single_state.html' | relative_url }}" 
-          width="100%" 
-          height="250px"
-          frameborder="0">
-  </iframe>
-</div>
-
+<p>result are in the main page !</p>
 
 
  

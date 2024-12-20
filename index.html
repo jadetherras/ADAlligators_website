@@ -757,16 +757,23 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
   "Indeed ! Our previous analysis still remains useful ! See the power of data analysis !", triumphs Ada while entering the room.</p>
 
 <h2>Put it all together : a correlation? </h2>
+
 <img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
-<div class="hover-container" align="center">
-  <p class="formula" align="center">
+<p>
+  Now that we have all this, can we feed it into a simple linear regression model? No, of course not. The box office revenue of violent movies and the count of violent movie releases are not the only two independent variables. <br/>
+  Moreover, we have a very high number of possible confounding factors, and on the other hand the violence level averaged over an entire year might not provide interesting details; due to its stability. We therefore aim for a very short timestep: one week . <br/>
+  "See, this is how it works. So, let's start with the formula...", Ada is eager to continue her explanation but is interrupted by an annoyed Crocolock: <br/>
+  "Ehm, can't we just jump directly to the conclusions of all this?".
+</p>
+<p class="formula" style="margin: auto;"></p>
+<div class="hover-container" >
     \[
     V_t = \alpha + \sum_{i=t-1}^{t-\text{lag}_{\text{ar}}} \beta_i \cdot V_i + 
     \sum_{j=t}^{t-\text{lag}_{\text{d}}} \gamma_j \cdot X_j + 
     \sum_{k=t}^{t-\text{lag}_{\text{d}}} \delta_k \cdot W_k + 
     \sum_{l=1}^{N/2} \epsilon_l \cdot T_l
     \]
-  </p>
+  
     <a href="3Methods#ARDL" class="card">
          <h3 class="card__title">ARDL</h3>
          <div class="bloodCard">
@@ -777,11 +784,116 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
           </div>
     </a>
 </div>
+</p>
+<p>
+  (Pssst, for more on the model click on the formula!) <br/>
+</p>
+
+<p>We tested several real violence score and movie violence score, but none of the model show any significant correlation between
+  the two metrics... Take a look at these tables. </p>
+
+<p><b>Naive approach:</b> In the first approach, we do not normalize and use the following values:
+    <ul>
+        <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
+        <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+        <li><b>\( V_i \):</b> Number of all criminal offenses registered in week \( i \)</li>
+    </ul>
+  </p>
+
+<p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
+
+<div style="width: 99%; margin: auto;">
+  <iframe src="{{ '../assets/table/Model_1_with_TFE_all_states.html' | relative_url }}" 
+          width="100%" 
+          height="250px"
+          frameborder="0">
+  </iframe>
+</div>
+
+<p>Only the p-value for the real violence of past weeks are significant.</p>
+
+<p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
+
+ <div style="width: 99%; margin: auto;">
+<iframe src="{{ '../assets/table/Model_1_with_TFE_single_state.html' | relative_url }}" 
+width="100%"
+height="250px"
+frameborder="0"></iframe>
+ </div>
+
+ <p>No effect of the box office revenue.</p>
+
+<p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
+
+<div style="width: 99%; margin: auto;">
+<iframe src="{{ '../assets/table/Model_1_without_TFE_all_states.html' | relative_url }}" 
+width="100%"
+height="250px"
+frameborder="0"></iframe>
+ </div>
+
+<p>P-value for the box-revenue are not significant, or have really small coefficient (range of 10 power -6).</p>
+
+<p> For South Carolina on the full data available and without time-fixed effects we get:</p>
+
+<div style="width: 99%; margin: auto;">
+<iframe src="{{ '../assets/table/Model_1_without_TFE_single_state.html' | relative_url }}" 
+width="100%"
+height="250px"
+frameborder="0"></iframe>
+ </div>
 
 <p>
-"See, this is how it works. So, let's start with the formula...", Ada is eager to continue her exploration but is interrupted by an annoyed Crocolock: <br/>
-"Ehm, can't we just jump directly to the conclusions of all this?".</p>
+ <b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues: 
+  <br/>
+      <ul>
+          <li><b>\( X_j \):</b> Fill NaN values of box office revenues with median, divide all values by the median, then sum up these values for the violent movies in week \( j \)</li>
+          <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+          <li><b>\( V_i \):</b> Z-score of the offense counts for each category of offense ('Assault Offenses', 'Robbery', 'Sex Offenses', 'Kidnapping/Abduction', 'Arson', 'Homicide Offenses') using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model for the normalization; reference point is the week \( i \)</li>
+      </ul>
+</p>
+  
+  <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
+  
+  <div style="width: 99%; margin: auto;">
+    <iframe src="{{ '../assets/table/Model_5_with_TFE_all_states.html' | relative_url }}" 
+            width="100%" 
+            height="250px"
+            frameborder="0">
+    </iframe>
+  </div>
+  
+  <p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
+  
+  <div style="width: 99%; margin: auto;">
+    <iframe src="{{ '../assets/table/Model_5_with_TFE_single_state.html' | relative_url }}" 
+            width="100%" 
+            height="250px"
+            frameborder="0">
+    </iframe>
+  </div>
+  
+  <p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
+  
+  <div style="width: 99%; margin: auto;">
+    <iframe src="{{ '../assets/table/Model_5_without_TFE_all_states.html' | relative_url }}" 
+            width="100%" 
+            height="250px"
+            frameborder="0">
+    </iframe>
+  </div>
+  
+  <p> For South Carolina on the full data available and without time-fixed effects we get:</p>
+  
+  <div style="width: 99%; margin: auto;">
+    <iframe src="{{ '../assets/table/Model_5_without_TFE_single_state.html' | relative_url }}" 
+            width="100%" 
+            height="250px"
+            frameborder="0">
+    </iframe>
+  </div>
 
+<p>What do we conclude ? </p>
 <h1 >Conclusion</h1>
 <div>
 <img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Crocolock.png" alt="one crocodile"/>
