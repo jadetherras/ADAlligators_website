@@ -230,6 +230,9 @@ ARDL_model = ARDL(
 
 <details>
     <summary>Other intermediate ARDL models...(if interested, click here)</summary>
+
+    <p><b>Baseline: in all of the following models, we could not detect a significant correlation between violent movies in real-world violence.</b></p>
+
     <ul>    
         <li><b>Violence offense ratios:</b> In this approach, we normalize the real-world violence but keep the box office revenues as they are.
             <ul>
@@ -242,8 +245,6 @@ ARDL_model = ARDL(
         <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
         </p></i>
 
-
-
         <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.
             <ul>
                 <li><b>\( X_j \):</b> Fill NaN values of box office revenues with the median, divide all values by the median, then sum up these values for the violent movies in week \( j \)</li>
@@ -252,6 +253,9 @@ ARDL_model = ARDL(
             </ul>
         </li>
 
+        <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
+        </p></i>
+
         <li><b>Z-score for violence offenses:</b> In this approach, we compute the z-score for the violence offenses but keep the box office revenues as they are.
             <ul>
                 <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
@@ -259,6 +263,10 @@ ARDL_model = ARDL(
                 <li><b>\( V_i \):</b> Z-score of the offense counts for each category of offense (e.g., Assault Offenses, Robbery, etc.) using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model.</li>
             </ul>
         </li>
+
+        <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
+        </p></i>
+        
     </ul>
 </details>
 
