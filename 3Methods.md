@@ -186,7 +186,6 @@ We lemmatize, remove the stop-words and then look at the categories most present
 
 <p>The model is built in the code using the ARDL class of the Statsmodels module in the following way:</p>
 
-<pre>
 <code>
 ARDL_model = ARDL(
                 endog=ENDOG,
@@ -197,43 +196,55 @@ ARDL_model = ARDL(
                 trend="c",
             ).fit()
 </code>
-</pre>
 
 <p><i> Note: We rerun the select_order function each time we apply the ARDL model to new data. Thus, we ensure to always use the optimal lag values for each dataset provided to the function.</i></p>
 
-<h3>Intermediate ARDL Models</h3>
+<h3>Approaches</h3>
 
 <p>We tried different ways of standardizing/normalizing the exogenous and endogenous variables before applying the model on them. We describe all approaches below and present the corresponding results for the coefficients. Since the purpose of the time-fixed effects in our model is purely to purge the exogenous variable from time-fixed confounding factors, we do not include their coefficients in the results here. Due to the high number of time-fixed effect factors (one for every two weeks in the data), this would also not be an efficient use of space on this page. If interested, you can analyze them using the code provided in the <i>results.ipynb</i>.</p>
 
-<h3>Approaches:</h3>
-
-<ul>
-    <li><b>Naïve approach:</b> In the first approach, we do not normalize and use the following values:</li>
+<li><b>Naïve approach:</b> In the first approach, we do not normalize and use the following values:
     <ul>
-        <li>X<sub>j</sub>: Sum of box office revenues of violent movies in week j</li>
-        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
-        <li>V<sub>i</sub>: Number of all criminal offenses registered in week i</li>
+        <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
+        <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+        <li><b>\( V_i \):</b> Number of all criminal offenses registered in week \( i \)</li>
     </ul>
+</li>
 
-    <li><b>Violence offense ratios:</b> In this approach, we normalize the real-world violence but keep the box office revenues as they are.</li>
-    <ul>
-        <li>X<sub>j</sub>: Sum of box office revenues of violent movies in week j</li>
-        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
-        <li>V<sub>i</sub>: Number of all criminal offenses registered in week i divided by the number of all criminal offenses registered in that year</li>
-    </ul>
+ <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
 
-    <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.</li>
-    <ul>
-        <li>X<sub>j</sub>: Fill NaN values of box office revenues with median, divide all values by the median, then sum up these values for the violent movies in week j</li>
-        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
-        <li>V<sub>i</sub>: Number of all criminal offenses registered in week i</li>
-    </ul>
+ 
 
-    <li><b>Z-score for violence offenses:</b> In this approach, we compute the z-score for the violence offenses but keep the box office revenues as they are.</li>
-    <ul>
-        <li>X<sub>j</sub>: Sum of box office revenues of violent movies in week j</li>
-        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
-        <li>V<sub>i</sub>: Z-score of the offense counts for each category of offense (e.g., Assault Offenses, Robbery, etc.) using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model.</li>
+<details>
+    <summary>Other intermediate ARDL models...(if interested, click here)</summary>
+    <ul>    
+        <li><b>Violence offense ratios:</b> In this approach, we normalize the real-world violence but keep the box office revenues as they are.
+            <ul>
+                <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
+                <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+                <li><b>\( V_i \):</b> Number of all criminal offenses registered in week \( i \) divided by the number of all criminal offenses registered in that year</li>
+            </ul>
+        </li>
+
+        <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.
+            <ul>
+                <li><b>\( X_j \):</b> Fill NaN values of box office revenues with the median, divide all values by the median, then sum up these values for the violent movies in week \( j \)</li>
+                <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+                <li><b>\( V_i \):</b> Number of all criminal offenses registered in week \( i \)</li>
+            </ul>
+        </li>
+
+        <li><b>Z-score for violence offenses:</b> In this approach, we compute the z-score for the violence offenses but keep the box office revenues as they are.
+            <ul>
+                <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
+                <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+                <li><b>\( V_i \):</b> Z-score of the offense counts for each category of offense (e.g., Assault Offenses, Robbery, etc.) using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model.</li>
+            </ul>
+        </li>
     </ul>
-</ul>
+</details>
+
+
+
+
  
