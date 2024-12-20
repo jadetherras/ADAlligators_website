@@ -266,11 +266,36 @@ ARDL_model = ARDL(
 
         <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
         </p></i>
-        
     </ul>
 </details>
 
+<br>
+<h3>Final ARDL Model</h3>
+<br>
 
+<li><b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues as in approach 3: 
+<br>
+    <ul>
+        <li><b>\( X_j \):</b> Fill NaN values of box office revenues with median, divide all values by the median, then sum up these values for the violent movies in week \( j \)</li>
+        <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
+        <li><b>\( V_i \):</b> Z-score of the offense counts for each category of offense ('Assault Offenses', 'Robbery', 'Sex Offenses', 'Kidnapping/Abduction', 'Arson', 'Homicide Offenses') using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model for the normalization; reference point is the week \( i \)</li>
+    </ul>
+</li>
 
+<p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
+
+<!-- Table here -->
+
+<p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
+
+<!-- Table here -->
+
+<p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
+
+<!-- Table here -->
+
+<p> For South Carolina on the full data available and without time-fixed effects we get:</p>
+
+<!-- Table here -->
 
  
