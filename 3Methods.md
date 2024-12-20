@@ -211,7 +211,21 @@ ARDL_model = ARDL(
     </ul>
 </li>
 
- <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
+<p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
+
+<!-- Table here -->
+
+<p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
+
+<!-- Table here -->
+
+<p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
+
+<!-- Table here -->
+
+<p> For South Carolina on the full data available and without time-fixed effects we get:</p>
+
+<!-- Table here -->
 
 
 <details>
@@ -224,6 +238,8 @@ ARDL_model = ARDL(
                 <li><b>\( V_i \):</b> Number of all criminal offenses registered in week \( i \) divided by the number of all criminal offenses registered in that year</li>
             </ul>
         </li>
+
+
 
         <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.
             <ul>
