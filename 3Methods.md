@@ -213,12 +213,6 @@ ARDL_model = ARDL(
 
  <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
 
-<body>
-
-    <object type="text/html" data="_data/Model_1_with_TFE_all_states.html"></object>
-
-  </body>
-
 
 <details>
     <summary>Other intermediate ARDL models...(if interested, click here)</summary>
