@@ -29,7 +29,7 @@ cover-img: "assets/img/AllTeam.png"
 <div>
 <img style="float: left;padding-right: 20px;" class="gators" src="../assets/img/Raphael.png" alt="one crocodile"/>
 <h2>Raphael</h2>
-<p> ARLD model? Say no more, he is our expert. Time and p-values don't have secrets for him, he is the detective of the team.</p>
+<p> ARDL model? Say no more, he is our expert. Time and p-values don't have secrets for him, he is the detective of the team.</p>
 <br/><br/><br/><br/><br/><br/>
 </div>
 
