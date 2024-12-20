@@ -253,6 +253,9 @@ ARDL_model = ARDL(
             </ul>
         </li>
 
+        <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
+        </p></i>
+
         <li><b>Z-score for violence offenses:</b> In this approach, we compute the z-score for the violence offenses but keep the box office revenues as they are.
             <ul>
                 <li><b>\( X_j \):</b> Sum of box office revenues of violent movies in week \( j \)</li>
@@ -260,6 +263,10 @@ ARDL_model = ARDL(
                 <li><b>\( V_i \):</b> Z-score of the offense counts for each category of offense (e.g., Assault Offenses, Robbery, etc.) using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model.</li>
             </ul>
         </li>
+
+        <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
+        </p></i>
+        
     </ul>
 </details>
 
