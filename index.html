@@ -562,17 +562,101 @@ For example, the ratio drops around 1917, 1921, 1929, 1937. More recently, there
 
 <h4>Exploring the NIBS dataset</h4>
 
+<p>"What’s NIBRS?"" Gator aksed, flipping through a dusty file labeled "CDE."</p>
+
+<p>Crocolock didn’t look up from the map he was tracing on. "National Incident-Based Reporting System. Crime data, straight from the FBI’s vault."</p>
+
+<p>Gator’s eyebrows rose. "And the Crime Data Explorer?"</p>
+
+<p>"FBI’s playground," Crocolock said, finally looking up. "Over 18,000 agencies feeding reports into the system. Voluntary for non-federal agencies, of course, but it’s as close to the truth as it gets. 
+
+  Problem is, what’s reported isn’t always everything that happens..."</p>
+
+<p>Yodada said: "Population size, economy, laws. They all change the story of the numbers." 
+
+  "Still, this data reveals a lot. Dates. Victims. Locations. Even the types of injuries. You want insight? You’ve got it. 
+
+  But be warned: there’s more to crime than the FBI’s definitions."</p>
+
+<p>"Violent crime," Gator said. "Homicide. Rape. Robbery. Aggravated assault..."</p>
+
+<p>"Force or threats," Yodada finished, a hint of impatience in his tone. "But what about Animal Cruelty? Unclassified? Clearly violent."</p>
+
+<p>Crocolock smirked. "We adjust the categories. The data’s ours to shape! Look at these plots"</p>
+
+<div class="flourish-embed flourish-hierarchy" data-src="visualisation/20877714"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20877714/thumbnail" width="100%" alt="hierarchy visualization" /></noscript></div>
+
+<div class="flourish-embed flourish-hierarchy" data-src="visualisation/20878229"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20878229/thumbnail" width="100%" alt="hierarchy visualization" /></noscript></div>
+
+<p>When looking at the count of offenses, some states might appear to be more violent simply due to their larger populations such as Michigan or Ohio. 
+
+  However, normalization reassures us that this is not necessarily the case. 
+
+  By adjusting for <a target="_blank" href="https://www.factmonster.com/us/fifty-states/state-population-rank-2012">population size</a>, we see that states with high offense counts may not always have 
+
+  the highest offense rates per capita. It provides us a clearer and fairer comparison of crime levels between states.</p>
+
+<p>Then, Yodada studied the yearly reports and muttered, "Let’s dive deeper into the trends of violence... 2012 will be our year of choice!" he said.
+
+<p>"And why 2012?" Gator asked.</p>
+
+<p>"That’s when most states spoke," Yodada replied. </p>
+
+<div class="flourish-embed flourish-map" data-src="visualisation/20744521"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20744521/thumbnail" width="100%" alt="map visualization" /></noscript></div>
+
+<p> Crocolock fingers danced across the keyboard. "Let’s see what their voices reveal..."</p>
 
 <iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Z_score_2012.html' | relative_url }}" 
+
 width="100%"
+
 height="800px" 
+
 frameborder="0"></iframe>
+
+p>"What do the trends tell us?" Gator asked, staring at the screen displaying the plots.</p>
+
+<p>Yodada adjusted his glasses, leaning closer to the data points. 
+
+  "The z-score plot," he began, "reveals how violent offenses deviate from the norm for each state. 
+
+  Weekly spikes and dips tell their own story—localized events, external influences or maybe patterns hidden in the chaos..."</p>
+
+<p>Gator looked at the chart. "So, those peaks... are they meaningful?"</p> 
+
+<p>"Indeed," Yodada replied. "Notice how certain weeks align with events like public holidays or major announcements. 
+
+  Take Week 18, for example: Obama's statement on same-sex marriage. A reaction, perhaps? 
+
+  And Week 44, Halloween—spikes across the board could be likely tied to festivities."</p> 
+
+<p>Crocolock, now hunched over his keyboard. "And that's just the z-scores. 
+
+  The normalized data per capita tells a different tale." He pulled up another plot. 
+
+</p>
 
 <iframe style="margin-left: -20px;" src="{{ '/assets/plotly/normalized_score_2012.html' | relative_url }}" 
+
 width="100%"
+
 height="800px" 
+
 frameborder="0"></iframe>
 
+<p>
+
+  "Here, states like Delaware and Tennessee stand out. Not because of sheer numbers, but because their rates are disproportionately high."</p>
+
+<p>"Small states look bigger," Gator noted.</p>
+
+<p>"Precisely," Yodada confirmed. "It's the power of normalization! It makes comparisons between states more fair. But it also has its blind spots 
+
+  like making smaller populations appear more significant than they might be."</p> 
+
+<p>Yodada leaned back in his chair, crossing his arms. "Between the two plots, the story becomes clearer. 
+
+  Z-scores show us the noise, the anomalies. And normalization reveals the scale. Together, they paint a fuller picture of violence across the states in 2012."</p> 
 <iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Z_score_2008-2012.html' | relative_url }}" 
 width="100%"
 height="800px" 
