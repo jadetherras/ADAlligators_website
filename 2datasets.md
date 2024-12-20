@@ -96,3 +96,6 @@ Definition: of violent crime The FBI categorizes violent crimes into four offens
 For our analysis, we adjusted these categories to include offenses that are clearly violent but were not classified as such by the FBI (e.g., Animal Cruelty)
 </p>
 
+<h2 style="text-align: center;">State Population by Rank, 2012</h2>
+<p>This dataset was used in the preliminary analysis of NIBRS to standardize offense counts relative to the population size of each state in 2012. (Source: <a target = "_blanck" href="https://www.factmonster.com/us/fifty-states/state-population-rank-2012">Fact Monster</a>)</p>
+
