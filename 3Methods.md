@@ -186,7 +186,20 @@ We lemmatize, remove the stop-words and then look at the categories most present
 
 <p>The model is built in the code using the ARDL class of the Statsmodels module in the following way:</p>
 
-<p><i>We rerun the select_order function each time we apply the ARDL model to new data. Thus, we ensure to always use the optimal lag values for each dataset provided to the function.</i></p>
+<pre>
+<code>
+ARDL_model = ARDL(
+                endog=ENDOG,
+                exog=EXOG,
+                lags=selected_order.ar_lags,
+                order=selected_order.dl_lags,
+                fixed=time_dummies,
+                trend="c",
+            ).fit()
+</code>
+</pre>
+
+<p><i> Note: We rerun the select_order function each time we apply the ARDL model to new data. Thus, we ensure to always use the optimal lag values for each dataset provided to the function.</i></p>
 
 <h3>Intermediate ARDL Models</h3>
 
