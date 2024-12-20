@@ -670,26 +670,71 @@ frameborder="0"></iframe>
 
 <p>Yodada leaned back in his chair, crossing his arms. "Between the two plots, the story becomes clearer. 
 
-  Z-scores show us the noise, the anomalies. And normalization reveals the scale. Together, they paint a fuller picture of violence across the states in 2012."</p> 
-<iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Z_score_2008-2012.html' | relative_url }}" 
-width="100%"
-height="800px" 
-frameborder="0"></iframe>
+  Z-scores show us the noise, the anomalies. And normalization reveals the scale. Together, they paint a fuller picture of violence across the states in 2012."
+</p> 
 
-<iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Count_2008-2012.html' | relative_url }}" 
-width="100%"
-height="800px" 
-frameborder="0"></iframe>
+<p>We now need to create a metric for the violent score. Counts, ratio, z-scores normalisation, min-max normalisation,... The list could go on!
+  But since we are interested in the time effect, we have to be careful not to include information from the future. 
+  Indeed, z-score taking into account all the available data as we did before is great to analyse the trends but, as soon 
+  as we move in time domain analysis, it results in errors. 
+  </p>
+  <p>"Indeed, it would be like doing time-travels, but we are not Marty and Dr. Emmet", points out Ada, referencing Back to the future.</p>
+  <p> 
+  "Let’s do a first approximate by summing all counts per week, no matter the category. I will dwelve in the subtle details of time-related data later."
+</p>
+  
+  <p>
+  This approach allows a general picture but have the huge drawback to consider all offenses category equally violent and do not take care of any imbalanced. </p>
+  <p>
+  "Let's take an example. Let imagine in week X 36 assaults have been commited but no homicide. Then week X+1, 1 assault and 35 murders has been commited. Those two weeks would appear equally violent, when their pattern isn't at all the same! How to correct this ? Z-score normalisation per category !" </p>
+  <p>
+   "But you mentionned that we couldn't look into the future to process our data..."</p>
+   <p>
+   "Well done! You're a quick learner. Indeed we can't simply take the mean and stantard deviation of the whole period consider. But this can be solved with the concept of past causal window. 
+   This means that for a given position <i>t</i> in the time, the rolling window includes only the current value and the values prior to it. 
+   It therefore preserves the natural timescale of the events while scaling them so that they are comparable."</p>
 
 
+<div class="GraphContainer">
+  <label class="switch">
+    <input type="checkbox" class="graph-toggle" data-target="group6">
+    <span class="slider"></span>
+  </label>
+
+  <div class="graph-group" id="group6">
+    <div class="violent">
+      <iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Z_score_2008-2012.html' | relative_url }}" 
+      width="100%"
+      height="800px" 
+      frameborder="0"></iframe>
+      </div>
+
+    <div class="peaceful">
+      <iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Count_2008-2012.html' | relative_url }}" 
+      width="100%"
+      height="800px" 
+      frameborder="0"></iframe>      
+    </div>
+  </div>
+</div>
+
+<p>We again observe again patterns corresponding to weeks where a particular event arise. This confirms that we haven’t distorted 
+  our real-life violence data! Note that, to enable their use in our model, we will aggregate them into a single value per week for each year consider. 
+
+  <p>"Taking care of chosing only states and consecutive years where we have data right ?", hazards Crocolock.</p>
+  <p>"Indeed ! Our previous analysis still remains useful ! See the power of data analysis !", triumphs Ada.</p>
 
 <h4>How to quantify violence ?</h4>
 
 <p>
-  Let's see just one state, still our old Alabama !
-  We have decided to limit our analysis to 6 offense categories. But how do they look like ? Do we see anything special ?
-  "Plot, you should, acquire knowledge, you will." tells Yodada.
-  Let's listen to this wise advice. Since it consists only in a preliminary analysis, let's restrict ourself to only one year and observe the different patterns accross the weeks.
+  To go with our analysis, let’s restrict ourselves to only 6 offense categories based on the ones described as the most violent by croco FBI. 
+  Note that there is a limitation of our analysis and mutliple tests should be performed to further fine-tune this choice. This choice is also due 
+  to the will of choosing categories that are present among all states considered in our analysis!</p>
+ <p>So what after? We have decided to limit our analysis to 6 offense categories, but how do they look like ? Do we see anything special ?
+  </p>
+  <p>"Plot, you should, acquire knowledge, you will." tells Yodada.</p>
+ <p>Let's listen to this wise advice. Since it consists only in a  preliminary analysis, let's restrict ourself to only one year and 
+  observe the different patterns accross the weeks.
 </p>
 
 <div class="flourish-embed flourish-heatmap" data-src="visualisation/20876482"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20876482/thumbnail" width="100%" alt="heatmap visualization" /></noscript></div>
@@ -705,21 +750,11 @@ frameborder="0"></iframe>
 <div class="flourish-embed flourish-chart" data-src="visualisation/20886100"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20886100/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 
 <p>
-  Interesting! The trend seems to remain, all available years combined. But maybe it is a localised phenomenon, what about the other states ?
-  Thanks to our earlier analysis, we know we can safely consider the year 2012 to compare accross states. Reminder here that we only have data for 36 out of 50 states! Let's keep this in mind.
+  Interesting! The trend seems to remain, all available years combined. But, maybe it is a localised phenomenon, what about the other states ?   
 </p>
-
-<p>
-  "Hum..Not sure about your analysis Yodada." <br/>
-  "Maybe coffeine too much we had..." <br/>
-  "It seems that nothing changes..."" states Crocolock, a little bit annoyed. <br/>
-  "Carefully, you should look !" It is true that those plots seem really close one to another but look carefully at the Robbery barplot between Washington and WestVirginia for instance, isn't there something happening ?<br/>
-  "You are right! Let's remove the Larcency/Theft Offense then."<br/>
-  Larcency/Theft Offense is removed. We now need to create a metric for the violent score. Counts, ratio, z-scores normalisation, min-max normalisation the list could go on. But since we are intersted in the time effect, we have to be careful not to include information from the future.
-
-"Indeed, it would be like doing time-travels, but we are not Marty and Dr. Emmet." points out Ada. Our professor is a quite well-versed in movies in case you wouldn't have noticed!
-
-We can do a first approximate by summing all couts per week no matter the category.
+<p>- Remember the earlier analysis, you should, says Yodada. </p>
+<p>Indeed, with the previous circles plot, we can observe that indeed Larceny was majorly present across all states and thus in our choice still remain an outlier. 
+  Let’s keep this in mind but not remove it. We will deal with it via z-score standardization.
 </p>
 
 <h2>Put it all together : a correlation? </h2>
