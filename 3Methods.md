@@ -273,7 +273,8 @@ ARDL_model = ARDL(
 <h3>Final ARDL Model</h3>
 <br>
 
-<li><b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues as in approach 3.
+<li><b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues as in approach 3: 
+<br>
     <ul>
         <li><b>\( X_j \):</b> Fill NaN values of box office revenues with median, divide all values by the median, then sum up these values for the violent movies in week \( j \)</li>
         <li><b>\( W_k \):</b> Count of violent movie releases in week \( k \)</li>
