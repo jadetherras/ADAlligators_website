@@ -71,7 +71,7 @@ In the analysis we carried out to establish the presence, or absence, of violenc
 Here we visualize the ratio of movies we keep after each step of the pipeline above:</p>
 <div class="flourish-embed flourish-chart" data-src="visualisation/20857333"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20857333/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 
-<h1 style="text-align: center;">NIBRS (FBI)dataset</h1>
+<h1 style="text-align: center;">NIBRS (FBI) dataset</h1>
 
 <p>
 The National Incident-Based Reporting System (<a target = "_blanck" href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads"> NIBRS </a>) is a U.S. system for collecting and analyzing crime data. The data found on the Crime Data Explorer (CDE) is sourced from the FBI’s Uniform Crime Reporting (UCR) Program, which collects information from over 18,000 federal, state, local, tribal and territorial law enforcement agencies across the U.S. (Source: <a target = "_blanck" href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/explorer/crime/crime-trend"> CDE</a>).
@@ -91,7 +91,7 @@ Why NIBRS Data is useful for our analysis:
 <ul>
     <li><b>Insights:</b> It provides specific details about incidents (including their exact dates, types, victim injuries and locations).</li>
     <li><b>Types of offenses:</b> Knowing the nature of offenses helps us classify crimes by their violent range.
-Definition: of violent crime The FBI categorizes violent crimes into four offenses: homicide, rape, robbery, and aggravated assault, all involving force or threats (Source: CDE).</li>
+Definition: of violent crime The FBI categorizes violent crimes into four offenses: homicide, rape, robbery, and aggravated assault, all involving force or threats (Source: <a target = "_blanck" href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/explorer/crime/crime-trend"> CDE</a>).</li>
 </ul>
 For our analysis, we adjusted these categories to include offenses that are clearly violent but were not classified as such by the FBI (e.g., Animal Cruelty)
 </p>
