@@ -710,7 +710,7 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
   Indeed, z-score taking into account all the available data as we did before is great to analyse the trends but, as soon 
   as we move in time domain analysis, it results in errors. 
   <br/>"Indeed, it would be like doing time-travels, but we are not Marty and Dr. Emmet", points out Yodada, referencing Back to the future.</p>
-  <div align="center">
+  <div>
   <iframe src="https://giphy.com/embed/KgX7on3DWfGSKGK8eI" width="480" height="360" style="margin:auto frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/BTTF-back-to-the-future-bttf-one-KgX7on3DWfGSKGK8eI">via GIPHY</a></p>
 </div>
   <p> 
@@ -759,39 +759,33 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
 <h2>Put it all together : a correlation? </h2>
 
 <img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
-<<<<<<< HEAD
 <p>
   Now that we have all this, can we feed it into a simple linear regression model? No, of course not. The box office revenue of violent movies and the count of violent movie releases are not the only two independent variables. <br/>
   Moreover, we have a very high number of possible confounding factors, and on the other hand the violence level averaged over an entire year might not provide interesting details; due to its stability. We therefore aim for a very short timestep: one week . <br/>
   "See, this is how it works. So, let's start with the formula...", Ada is eager to continue her explanation but is interrupted by an annoyed Crocolock: <br/>
   "Ehm, can't we just jump directly to the conclusions of all this?".
 </p>
-<p class="formula" style="margin: auto;"></p>
+
 <div class="hover-container" >
-=======
-<div align="center">
-<div class="hover-container">
-  <p class="formula" align="center">
->>>>>>> 0353764f5f03334c98fa619749661060e50f7d47
+  <p class="formula">
     \[
     V_t = \alpha + \sum_{i=t-1}^{t-\text{lag}_{\text{ar}}} \beta_i \cdot V_i + 
     \sum_{j=t}^{t-\text{lag}_{\text{d}}} \gamma_j \cdot X_j + 
     \sum_{k=t}^{t-\text{lag}_{\text{d}}} \delta_k \cdot W_k + 
     \sum_{l=1}^{N/2} \epsilon_l \cdot T_l
     \]
-  
-    <a href="3Methods#ARDL" class="card">
-         <h3 class="card__title">ARDL</h3>
-         <div class="bloodCard">
-          <div class="drops"> 
-            <div class="drop1"></div>
-            <div class="drop3"></div>
-          </div> 
-          </div>
-    </a>
+  </p>
+<a href="3Methods#ARDL" class="card">
+  <h3 class="card__title">ARDL</h3>
+  <div class="bloodCard">
+   <div class="drops"> 
+     <div class="drop1"></div>
+     <div class="drop3"></div>
+   </div> 
 </div>
-<<<<<<< HEAD
-</p>
+</a>
+</div>
+
 <p>
   (Pssst, for more on the model click on the formula!) <br/>
 </p>
@@ -839,7 +833,7 @@ height="250px"
 frameborder="0"></iframe>
  </div>
 
-<p>P-value for the box-revenue are not significant, or have really small coefficient (range of 10 power -6).</p>
+<p>P-value for the box office revenue are not significant, or have really small coefficient (range of 10 power -6).</p>
 
 <p> For South Carolina on the full data available and without time-fixed effects we get:</p>
 
@@ -849,9 +843,9 @@ width="100%"
 height="250px"
 frameborder="0"></iframe>
  </div>
-=======
-</div>
->>>>>>> 0353764f5f03334c98fa619749661060e50f7d47
+
+ <p>No effect of the box office revenue.</p>
+
 
 <p>
  <b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues: 
@@ -872,6 +866,8 @@ frameborder="0"></iframe>
             frameborder="0">
     </iframe>
   </div>
+
+  <p>Only the p-value for the real violence of past weeks are significant.</p>
   
   <p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
   
@@ -882,6 +878,8 @@ frameborder="0"></iframe>
             frameborder="0">
     </iframe>
   </div>
+
+<p>No effect of the box office revenues.</p>
   
   <p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
   
@@ -893,6 +891,8 @@ frameborder="0"></iframe>
     </iframe>
   </div>
   
+  <p>Box office revenue with significant P-value have small coefficient.</p>
+
   <p> For South Carolina on the full data available and without time-fixed effects we get:</p>
   
   <div style="width: 99%; margin: auto;">
@@ -902,6 +902,10 @@ frameborder="0"></iframe>
             frameborder="0">
     </iframe>
   </div>
+
+  <p>Only the real world violence is significant.</p>
+
+  <p>No effect of the box office revenues.</p>
 
 <p>What do we conclude ? </p>
 <h1 >Conclusion</h1>
