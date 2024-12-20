@@ -4,7 +4,7 @@ title: Models & methods
 subtitle: What we used, how and why
 ---
 
-<h1>Sentiment analysis</h1>
+<h1 id="Sentiment">Sentiment analysis</h1>
 <h2>A first naive method for classification</h2>
 
 <p>In a naive trial for classification, we used a pretrained <a href="https://huggingface.co/bhadresh-savani/distilbert-base-uncased-emotion"> DistilBert sentiment analysis model</a> to extract sentiments from the movies' plots and trained a logistic regression on the result. As logistic regression is a supervised machine learning method, we trained it only on a subset of the human labelled data and tested the model on a validation set. The method performed poorly (30% accuracy).</p>
@@ -28,7 +28,7 @@ Note: this graph is huge, it can crash. Dont hesitate to refresh the page if nee
 <p>No surprise the model performed poorly ! First, the model tends to give high scores for anger in general, for both violent and non-violent movies. Using all the classified data, we can see that violent movies tend to have higher anger and fear scores, where peaceful movies tend to have a slightly higher joy score, and interestingly a higher sadness score. The latter can be explained by the shared percentage, whcih is close for both movies. <br/>
 However, the most important conclusion we can draw from this plot is that boxplots largely overlap. We threfore can't classify the data only with this metric. The concept of violence is too complex and isn't captured by this model!</p>
 
-<h1 id="#LLM">LLM for violence classification</h1>
+<h1 id="LLM">LLM for violence classification</h1>
 
 <p>
 The model described previously was not working so well... hence we upgraded! <br/>
@@ -117,7 +117,7 @@ completion = self.client.chat.completions.create(
 )
 ```
 
-<h1>Empath model</h1>
+<h1 id="Empath">Empath model</h1>
 
 <p>
 In the first iterations, we used lists of manually selected words to analyse our plots. The level of violence in the movies would depend on how many times the words in the lists were counted in the summary. <br/>
@@ -130,7 +130,7 @@ To solve these problems, we decided to use the Empath model in combination with 
 We lemmatize, remove the stop-words and then look at the categories most present in each summary. This allows us also to evaluate the correctness of the LLM: we make sure that the categories most represented in violent movies are indeed violent ones and vice-versa. 
 </p>
 
-<h1>Auto-regressive distributed lag model</h1>
+<h1 id="ARDL">Auto-regressive distributed lag model</h1>
 
 <p>With the data on violence in movies and real-life violence cleaned and matched, we can start the correlation analysis.</p>
 
@@ -147,17 +147,17 @@ We lemmatize, remove the stop-words and then look at the categories most present
     <li><b>The distributed lag part:</b> Taking into account that also past time steps of the independent variable (box office revenues of violent movies) are included in the model.</li>
 </ul>
 
-<p>The optimal lag for both parts, i.e., how many previous time steps are included in the model, is found using the <code>ardl_select_order</code> function from the Statsmodels module. This function needs a value for the maximum lag allowed as input. For this, we set a maximum lag of 6 timesteps for both lags. This ensures a good balance between exhaustiveness and statistical robustness and moreover reflects the fact that in general movies make most of their profit during the “opening window” of the first 4-6 weeks after release (source: <a href="https://www.boxofficemojo.com/chart/top_opening_weekend/">Box Office Mojo</a>).</p>
+<p>The optimal lag for both parts, i.e., how many previous time steps are included in the model, is found using the <code>ardl_select_order</code> function from the Statsmodels module. This function needs a value for the maximum lag allowed as input. For this, we set a maximum lag of 6 timesteps for both lags. This ensures a good balance between exhaustiveness and statistical robustness and moreover reflects the fact that in general movies make most of their profit during the “opening window” of the first 4-6 weeks after release (source: <a target="_blank" href="https://www.boxofficemojo.com/chart/top_opening_weekend/">Box Office Mojo</a>).</p>
 
 <p>Lastly, we account for time-specific real-world violence levels with time-fixed effects. Due to the limited data available after filtering and cleaning, we chose biweekly time-fixed effects, i.e., additional constant factors that capture time-specific real-world violence levels that are not explained by the violent movie effects.</p>
 
-<h2>Final Model Formula</h2>
+<h3>Final Model Formula</h3>
 
 <p>The final model is thus an auto-regressive distributed lag model with time fixed effects, described by the following formula:</p>
 
 <p class="formula">V<sub>t</sub> = α + ∑<sub>i=t-1</sub><sup>t-〖lag〗<sub>ar</sub></sup> β<sub>i</sub> ∙ V<sub>i</sub> + ∑<sub>j=t</sub><sup>t-〖lag〗<sub>d</sub></sup> γ<sub>j</sub> ∙ X<sub>j</sub> + ∑<sub>k=t</sub><sup>t-〖lag〗<sub>d</sub></sup> δ<sub>k</sub> ∙ W<sub>k</sub> + ∑<sub>l=1</sub><sup>N/2</sup> ε<sub>l</sub> ∙ T<sub>l</sub></p>
 
-<h3>Where:</h3>
+<h4>Where:</h4>
 <ul>
     <li><b>V<sub>t</sub>:</b> Endogenous variable: real-world violence value in week t.</li>
     <li><b>α:</b> Constant term.</li>
@@ -174,7 +174,7 @@ We lemmatize, remove the stop-words and then look at the categories most present
     <li><b>N:</b> Total number of weeks in the data.</li>
 </ul>
 
-<h2>Model Implementation</h2>
+<h3>Model Implementation</h3>
 
 <p>The model is built in the code using the ARDL class of the Statsmodels module in the following way:</p>
 

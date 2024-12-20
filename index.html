@@ -267,11 +267,27 @@ Especially, 3 movies have been assigned to opposite labels! (Of which two had th
 
 <h4>Movie violence classification</h4>
 <p>
+  "We Could try sentiment analysis to classify the data." propose naively Gatson. 
+  Ada take her computer and make a try, but the accuracy in the validation set don't exceed <b>30%</b> 
+  "The concept of violence is too complex to be apprehended by a model with 6 sentiment, we will find another way to classify, but we will take a look at sentiment later" declare Ada.
+  <div class="hover-container">
+    Here for a deeper look into the sentiment analysis and the later assesment of the model.
+      <a href="3Methods/#Sentiment" class="card">
+           <h3 class="card__title">DistillBert Sentiment analysis</h3>
+           <div class="bloodCard">
+            <div class="drops"> 
+              <div class="drop1"></div>
+              <div class="drop3"></div>
+            </div> 
+        </div>
+      </a>
+    </div>
+</p><p>
 To classify the data, we will use the large language model <a target="_blank" href="https://platform.openai.com/docs/models#gpt-4o-mini">Chat-GPT-4o mini</a> from OpenIA. 
 Following the past finding, Ada engineered a prompt with a clear set of instruction (classification and return type). A scale of violence with a clear definition of each levels, and a set of examples.
 <div class="hover-container">
-  Here for a deeper look into the model.
-    <a href="3Methods#LLM" class="card">
+  Here for a deeper look into the LLM model.
+    <a href="3Methods/#LLM" class="card">
          <h3 class="card__title">LLM model</h3>
          <div class="bloodCard">
           <div class="drops"> 
@@ -292,6 +308,18 @@ Interestingly, the model tends to be more extreme than humans, labelling half of
 "What is the Empath package? What does it do?", asks Crocolock. <br/>
 "The Empath package is a tool that utilizes a pre-trained model, built using techniques like word embeddings, to group words into meaningful categories based on their context. We will use it to scan through movie summaries and verify that movies labelled as violent by the LLM are indeed dominated by violent categories (I expect to see crime, anger, kill, etc.). It’s a quick a way to figure out how much violent language pops up in a text without doing all the heavy lifting yourself. We avoid having to craft lists of violent words ourselves, introducing biases and incoherences (as I did once in the past...). 
 </p>
+<div class="hover-container">
+  Here for a deeper look into the empath package.
+    <a href="3Methods#Empath" class="card">
+         <h3 class="card__title">Empath model</h3>
+         <div class="bloodCard">
+          <div class="drops"> 
+            <div class="drop1"></div>
+            <div class="drop3"></div>
+          </div> 
+      </div>
+    </a>
+  </div> <br/>
 
 <h4>Categorisation of the classification: are movies correctly grouped?</h4>
 
@@ -523,6 +551,8 @@ This was for the yearly trend, but within a year, is there a pattern ? </p>
 
 <h4>Exploring the NIBS dataset</h4>
 
+<div w3-include-html="assets/plotly/Z_score_2012.html"></div>
+
 <h4>How to quantify violence ?</h4>
 
 <p>
@@ -564,6 +594,9 @@ We can do a first approximate by summing all couts per week no matter the catego
 
 <h2>Put it all together : a correlation? </h2>
 
+<img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
+
+
 <h1 >Conclusion</h1>
 <div>
 <img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Crocolock.png" alt="one crocodile"/>
@@ -593,3 +626,34 @@ violence and movie violence.
 <p style="text-align: center;">
   No crocodiles have been injured during this project.
   </p>
+
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+    includeHTML();
+    </script>
