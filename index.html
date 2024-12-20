@@ -710,8 +710,8 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
   Indeed, z-score taking into account all the available data as we did before is great to analyse the trends but, as soon 
   as we move in time domain analysis, it results in errors. 
   <br/>"Indeed, it would be like doing time-travels, but we are not Marty and Dr. Emmet", points out Yodada, referencing Back to the future.</p>
-  <div style="margin: auto;">
-  <iframe src="https://giphy.com/embed/KgX7on3DWfGSKGK8eI" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/BTTF-back-to-the-future-bttf-one-KgX7on3DWfGSKGK8eI">via GIPHY</a></p>
+  <div style="margin:auto">
+  <iframe src="https://giphy.com/embed/KgX7on3DWfGSKGK8eI" width="480" height="360" style="margin:auto frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/BTTF-back-to-the-future-bttf-one-KgX7on3DWfGSKGK8eI">via GIPHY</a></p>
 </div>
   <p> 
   "Let’s do a first approximate by summing all counts per week, no matter the category. I will dwelve in the subtle details of time-related data later."
@@ -757,9 +757,31 @@ Indeed, with the previous circles plot, we can observe that indeed Larceny was m
   "Indeed ! Our previous analysis still remains useful ! See the power of data analysis !", triumphs Ada while entering the room.</p>
 
 <h2>Put it all together : a correlation? </h2>
+<div>
+<img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/> </div>
+<div class="hover-container">
+  <p class="formula">
+    \[
+    V_t = \alpha + \sum_{i=t-1}^{t-\text{lag}_{\text{ar}}} \beta_i \cdot V_i + 
+    \sum_{j=t}^{t-\text{lag}_{\text{d}}} \gamma_j \cdot X_j + 
+    \sum_{k=t}^{t-\text{lag}_{\text{d}}} \delta_k \cdot W_k + 
+    \sum_{l=1}^{N/2} \epsilon_l \cdot T_l
+    \]
+  </p>
+    <a href="3Methods#ARDL" class="card">
+         <h3 class="card__title">ARDL</h3>
+         <div class="bloodCard">
+          <div class="drops"> 
+            <div class="drop1"></div>
+            <div class="drop3"></div>
+          </div> 
+          </div>
+    </a>
+</div>
 
-<img style="float: left;padding-right: 20px;" class="gators" src="assets/img/Professore_Ada_Reptking.png" alt="again a crocodile"/>
-
+<p>
+"See, this is how it works. So, let's start with the formula...", Ada is eager to continue her exploration but is interrupted by an annoyed Crocolock: <br/>
+"Ehm, can't we just jump directly to the conclusions of all this?".</p>
 
 <h1 >Conclusion</h1>
 <div>
