@@ -551,7 +551,13 @@ This was for the yearly trend, but within a year, is there a pattern ? </p>
 
 <h4>Exploring the NIBS dataset</h4>
 
-<div w3-include-html="assets/plotly/Z_score_2012.html"></div>
+
+  <iframe style="margin-left: -20px;" src="{{ '/assets/plotly/Z_score_2012.html' | relative_url }}" 
+width="100%"
+height="800px" 
+frameborder="0"></iframe>
+
+
 
 <h4>How to quantify violence ?</h4>
 
@@ -626,34 +632,3 @@ violence and movie violence.
 <p style="text-align: center;">
   No crocodiles have been injured during this project.
   </p>
-
-  <script>
-    function includeHTML() {
-      var z, i, elmnt, file, xhttp;
-      /* Loop through a collection of all HTML elements: */
-      z = document.getElementsByTagName("*");
-      for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("w3-include-html");
-        if (file) {
-          /* Make an HTTP request using the attribute value as the file name: */
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-              /* Remove the attribute, and call this function once more: */
-              elmnt.removeAttribute("w3-include-html");
-              includeHTML();
-            }
-          }
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          /* Exit the function: */
-          return;
-        }
-      }
-    }
-    includeHTML();
-    </script>
