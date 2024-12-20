@@ -165,29 +165,21 @@ We lemmatize, remove the stop-words and then look at the categories most present
     \]
 </p>
 
-<p class="formula">
-    V<sub>t</sub> = α + 
-    ∑<sub>i=t-1</sub><sup>t-lag<sub>ar</sub></sup> β<sub>i</sub>∙V<sub>i</sub> + 
-    ∑<sub>j=t</sub><sup>t-lag<sub>d</sub></sup> γ<sub>j</sub>∙X<sub>j</sub> + 
-    ∑<sub>k=t</sub><sup>t-lag<sub>d</sub></sup> δ<sub>k</sub>∙W<sub>k</sub> + 
-    ∑<sub>l=1</sub><sup>N/2</sup> ε<sub>l</sub>∙T<sub>l</sub>
-</p>
-
 <h4>Where:</h4>
 <ul>
-    <li><b>V<sub>t</sub>:</b> Endogenous variable: real-world violence value in week t.</li>
-    <li><b>α:</b> Constant term.</li>
-    <li><b>β<sub>i</sub>:</b> Coefficients for the lagged real-world violence values.</li>
-    <li><b>V<sub>i</sub>:</b> Endogenous variable: real-world violence value in week i.</li>
-    <li><b>〖lag〗<sub>ar</sub>:</b> Optimal lag for auto-regressive part.</li>
-    <li><b>γ<sub>j</sub>:</b> Coefficients for the lagged movie violence values.</li>
-    <li><b>X<sub>j</sub>:</b> Exogenous variable: box office revenue of violent movies in week j.</li>
-    <li><b>〖lag〗<sub>d</sub>:</b> Optimal lag for distributed lag part.</li>
-    <li><b>δ<sub>k</sub>:</b> Coefficient for the lagged count of violent movies.</li>
-    <li><b>W<sub>k</sub>:</b> Exogenous variable: count of violent movie releases in week k.</li>
-    <li><b>ε<sub>l</sub>:</b> Coefficients for the biweekly time-fixed effects.</li>
-    <li><b>T<sub>l</sub>:</b> Time-fixed effect of biweek l.</li>
-    <li><b>N:</b> Total number of weeks in the data.</li>
+    <li><b>\( V_t \):</b> Endogenous variable: real-world violence value in week \( t \).</li>
+    <li><b>\( \alpha \):</b> Constant term.</li>
+    <li><b>\( \beta_i \):</b> Coefficients for the lagged real-world violence values.</li>
+    <li><b>\( V_i \):</b> Endogenous variable: real-world violence value in week \( i \).</li>
+    <li><b>\( \text{lag}_{\text{ar}} \):</b> Optimal lag for the auto-regressive part.</li>
+    <li><b>\( \gamma_j \):</b> Coefficients for the lagged movie violence values.</li>
+    <li><b>\( X_j \):</b> Exogenous variable: box office revenue of violent movies in week \( j \).</li>
+    <li><b>\( \text{lag}_{\text{d}} \):</b> Optimal lag for the distributed lag part.</li>
+    <li><b>\( \delta_k \):</b> Coefficients for the lagged count of violent movies.</li>
+    <li><b>\( W_k \):</b> Exogenous variable: count of violent movie releases in week \( k \).</li>
+    <li><b>\( \epsilon_l \):</b> Coefficients for the biweekly time-fixed effects.</li>
+    <li><b>\( T_l \):</b> Time-fixed effect of biweek \( l \).</li>
+    <li><b>\( N \):</b> Total number of weeks in the data.</li>
 </ul>
 
 <h3>Model Implementation</h3>
