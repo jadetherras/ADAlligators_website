@@ -1,0 +1,146 @@
+<head>
+  <style>
+    /* Apply to all tables inside the iframe */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+
+    th {
+      background-color: #9C1C1C; /* Dark red */
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 13px;
+      border: 1px solid #f2f2f2;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #fdf0f0;
+    }
+
+    tbody tr:hover {
+      background-color: #f1d3d3;
+      cursor: pointer;
+    }
+
+    table, th, td {
+      border: 1px solid #e0e0e0;
+    }
+
+    caption {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px;
+      background-color: #9C1C1C;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<table border="1" class="dataframe table table-striped table-bordered">
+  <thead>
+    <tr >
+      <th>variable</th>
+      <th>coefficient</th>
+      <th>std_err</th>
+      <th>p_value</th>
+      <th>lower_ci</th>
+      <th>upper_ci</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>const</td>
+      <td>5.735571e+03</td>
+      <td>2.031030e+03</td>
+      <td>0.005</td>
+      <td>1.754752e+03</td>
+      <td>9.716389e+03</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L1</td>
+      <td>6.477000e-01</td>
+      <td>6.300000e-02</td>
+      <td>0.000</td>
+      <td>5.242200e-01</td>
+      <td>7.711800e-01</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L2</td>
+      <td>8.720000e-02</td>
+      <td>7.300000e-02</td>
+      <td>0.234</td>
+      <td>-5.588000e-02</td>
+      <td>2.302800e-01</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L3</td>
+      <td>3.230000e-02</td>
+      <td>7.200000e-02</td>
+      <td>0.654</td>
+      <td>-1.088200e-01</td>
+      <td>1.734200e-01</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L4</td>
+      <td>1.334000e-01</td>
+      <td>5.900000e-02</td>
+      <td>0.026</td>
+      <td>1.776000e-02</td>
+      <td>2.490400e-01</td>
+    </tr>
+    <tr>
+      <td>Box office revenue.L0</td>
+      <td>-3.775000e-08</td>
+      <td>6.130000e-07</td>
+      <td>0.951</td>
+      <td>-1.239230e-06</td>
+      <td>1.163730e-06</td>
+    </tr>
+    <tr>
+      <td>Box office revenue.L1</td>
+      <td>7.535000e-08</td>
+      <td>6.090000e-07</td>
+      <td>0.902</td>
+      <td>-1.118290e-06</td>
+      <td>1.268990e-06</td>
+    </tr>
+    <tr>
+      <td>Box office revenue.L2</td>
+      <td>3.323000e-07</td>
+      <td>6.090000e-07</td>
+      <td>0.586</td>
+      <td>-8.613400e-07</td>
+      <td>1.525940e-06</td>
+    </tr>
+    <tr>
+      <td>Box office revenue.L3</td>
+      <td>-1.871000e-06</td>
+      <td>6.100000e-07</td>
+      <td>0.002</td>
+      <td>-3.066600e-06</td>
+      <td>-6.754000e-07</td>
+    </tr>
+    <tr>
+      <td>Box office revenue.L4</td>
+      <td>1.136000e-06</td>
+      <td>6.250000e-07</td>
+      <td>0.070</td>
+      <td>-8.900000e-08</td>
+      <td>2.361000e-06</td>
+    </tr>
+  </tbody>
+</table>

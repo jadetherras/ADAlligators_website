@@ -74,7 +74,7 @@ We want the model to return an array of predictions, one prediction per plot. We
 
 <h4>Custom function for classification</h4>
 
-```ruby
+<pre><code class="python">
 self.function = {
 "name": "Assign_violence_level",
 "description": "Predict the level of violence of a list of movie plots",
@@ -99,13 +99,13 @@ self.function = {
     ]
 }
 }
-```
+</code></pre>
 
 Finally, we create the request by combining all elements. 
 
 <h4>Create a request</h4>
 
-```ruby
+<pre><code class="python">
 completion = self.client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -116,7 +116,7 @@ completion = self.client.chat.completions.create(
     functions=[self.function],
     function_call={"name": "Assign_violence_level"},
 )
-```
+</code></pre>
 
 <h1 id="Empath">Empath model</h1>
 
@@ -186,16 +186,16 @@ We lemmatize, remove the stop-words and then look at the categories most present
 
 <p>The model is built in the code using the ARDL class of the Statsmodels module in the following way:</p>
 
-<code>
+<pre><code class="python">
 ARDL_model = ARDL(
-                endog=ENDOG,
-                exog=EXOG,
-                lags=selected_order.ar_lags,
-                order=selected_order.dl_lags,
-                fixed=time_dummies,
-                trend="c",
-            ).fit()
-</code>
+        endog=ENDOG,
+        exog=EXOG,
+        lags=selected_order.ar_lags,
+        order=selected_order.dl_lags,
+        fixed=time_dummies,
+        trend="c",
+    ).fit()
+</code></pre>
 
 <p><i> Note: We rerun the select_order function each time we apply the ARDL model to new data. Thus, we ensure to always use the optimal lag values for each dataset provided to the function.</i></p>
 
@@ -213,20 +213,40 @@ ARDL_model = ARDL(
 
 <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
 
-<!-- Table here -->
+<div style="width: 99%; margin: auto;">
+  <iframe src="{{ '../assets/table/Model_1_with_TFE_all_states.html' | relative_url }}" 
+          width="100%" 
+          height="250px"
+          frameborder="0">
+  </iframe>
+</div>
 
 <p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
 
-<!-- Table here -->
+ <div style="width: 99%; margin: auto;">
+<iframe src="{{ '../assets/table/Model_1_with_TFE_single_state.html' | relative_url }}" 
+width="100%"
+height="250px"
+frameborder="0"></iframe>
+ </div>
 
 <p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
 
-<!-- Table here -->
+<div style="width: 99%; margin: auto;">
+<iframe src="{{ '../assets/table/Model_1_without_TFE_all_states.html' | relative_url }}" 
+width="100%"
+height="250px"
+frameborder="0"></iframe>
+ </div>
 
 <p> For South Carolina on the full data available and without time-fixed effects we get:</p>
 
-<!-- Table here -->
-
+<div style="width: 99%; margin: auto;">
+<iframe src="{{ '../assets/table/Model_1_without_TFE_single_state.html' | relative_url }}" 
+width="100%"
+height="250px"
+frameborder="0"></iframe>
+ </div>
 
 <details>
     <summary>Other intermediate ARDL models...(if interested, click here)</summary>
@@ -284,18 +304,44 @@ ARDL_model = ARDL(
 
 <p>Running the model for all states together (for the years 2008 – 2012 where we have full data for all states) with time-fixed effects leads to the following summary:</p>
 
-<!-- Table here -->
+<div style="width: 99%; margin: auto;">
+  <iframe src="{{ '../assets/table/Model_5_with_TFE_all_states.html' | relative_url }}" 
+          width="100%" 
+          height="250px"
+          frameborder="0">
+  </iframe>
+</div>
 
 <p> For a single state, here South Carolina, on the full data available for this state and with time-fixed effects we get:</p>
 
-<!-- Table here -->
+<div style="width: 99%; margin: auto;">
+  <iframe src="{{ '../assets/table/Model_5_with_TFE_single_state.html' | relative_url }}" 
+          width="100%" 
+          height="250px"
+          frameborder="0">
+  </iframe>
+</div>
 
 <p> For all states (years 2008 - 2012) without time-fixed effects we get:</p>
 
-<!-- Table here -->
+<div style="width: 99%; margin: auto;">
+  <iframe src="{{ '../assets/table/Model_5_without_TFE_all_states.html' | relative_url }}" 
+          width="100%" 
+          height="250px"
+          frameborder="0">
+  </iframe>
+</div>
 
 <p> For South Carolina on the full data available and without time-fixed effects we get:</p>
 
-<!-- Table here -->
+<div style="width: 99%; margin: auto;">
+  <iframe src="{{ '../assets/table/Model_5_without_TFE_single_state.html' | relative_url }}" 
+          width="100%" 
+          height="250px"
+          frameborder="0">
+  </iframe>
+</div>
+
+
 
  

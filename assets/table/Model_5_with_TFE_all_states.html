@@ -1,0 +1,154 @@
+<head>
+  <style>
+    /* Apply to all tables inside the iframe */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+
+    th {
+      background-color: #9C1C1C; /* Dark red */
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 13px;
+      border: 1px solid #f2f2f2;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #fdf0f0;
+    }
+
+    tbody tr:hover {
+      background-color: #f1d3d3;
+      cursor: pointer;
+    }
+
+    table, th, td {
+      border: 1px solid #e0e0e0;
+    }
+
+    caption {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px;
+      background-color: #9C1C1C;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<table border="1" class="dataframe table table-striped table-bordered">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variable</th>
+      <th>coefficient</th>
+      <th>std_err</th>
+      <th>p_value</th>
+      <th>lower_ci</th>
+      <th>upper_ci</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>const</td>
+      <td>41.3756</td>
+      <td>104.945</td>
+      <td>0.694</td>
+      <td>-164.31660</td>
+      <td>247.06780</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L1</td>
+      <td>-0.4905</td>
+      <td>0.103</td>
+      <td>0.000</td>
+      <td>-0.69238</td>
+      <td>-0.28862</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L2</td>
+      <td>-0.3435</td>
+      <td>0.111</td>
+      <td>0.002</td>
+      <td>-0.56106</td>
+      <td>-0.12594</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L3</td>
+      <td>-0.3325</td>
+      <td>0.107</td>
+      <td>0.002</td>
+      <td>-0.54222</td>
+      <td>-0.12278</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L4</td>
+      <td>-0.1101</td>
+      <td>0.109</td>
+      <td>0.312</td>
+      <td>-0.32374</td>
+      <td>0.10354</td>
+    </tr>
+    <tr>
+      <td>no. films released.L0</td>
+      <td>-4.2674</td>
+      <td>19.171</td>
+      <td>0.824</td>
+      <td>-41.84256</td>
+      <td>33.30776</td>
+    </tr>
+    <tr>
+      <td>no. films released.L1</td>
+      <td>13.1114</td>
+      <td>22.696</td>
+      <td>0.565</td>
+      <td>-31.37276</td>
+      <td>57.59556</td>
+    </tr>
+    <tr>
+      <td>no. films released.L2</td>
+      <td>20.6869</td>
+      <td>22.758</td>
+      <td>0.365</td>
+      <td>-23.91878</td>
+      <td>65.29258</td>
+    </tr>
+    <tr>
+      <td>no. films released.L3</td>
+      <td>21.5697</td>
+      <td>23.725</td>
+      <td>0.365</td>
+      <td>-24.93130</td>
+      <td>68.07070</td>
+    </tr>
+    <tr>
+      <td>no. films released.L4</td>
+      <td>-64.2259</td>
+      <td>25.816</td>
+      <td>0.014</td>
+      <td>-114.82526</td>
+      <td>-13.62654</td>
+    </tr>
+    <tr>
+      <td>no. films released.L5</td>
+      <td>-32.7834</td>
+      <td>22.970</td>
+      <td>0.156</td>
+      <td>-77.80460</td>
+      <td>12.23780</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,130 @@
+<head>
+  <style>
+    /* Apply to all tables inside the iframe */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+
+    th {
+      background-color: #9C1C1C; /* Dark red */
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 13px;
+      border: 1px solid #f2f2f2;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #fdf0f0;
+    }
+
+    tbody tr:hover {
+      background-color: #f1d3d3;
+      cursor: pointer;
+    }
+
+    table, th, td {
+      border: 1px solid #e0e0e0;
+    }
+
+    caption {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px;
+      background-color: #9C1C1C;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<table border="1" class="dataframe table table-striped table-bordered">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variable</th>
+      <th>coefficient</th>
+      <th>std_err</th>
+      <th>p_value</th>
+      <th>lower_ci</th>
+      <th>upper_ci</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>const</td>
+      <td>0.4096</td>
+      <td>0.242</td>
+      <td>0.091</td>
+      <td>-0.06472</td>
+      <td>0.88392</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L1</td>
+      <td>0.1255</td>
+      <td>0.033</td>
+      <td>0.000</td>
+      <td>0.06082</td>
+      <td>0.19018</td>
+    </tr>
+    <tr>
+      <td>Violence_score.L2</td>
+      <td>0.0492</td>
+      <td>0.033</td>
+      <td>0.133</td>
+      <td>-0.01548</td>
+      <td>0.11388</td>
+    </tr>
+    <tr>
+      <td>no. films released.L0</td>
+      <td>0.0365</td>
+      <td>0.043</td>
+      <td>0.395</td>
+      <td>-0.04778</td>
+      <td>0.12078</td>
+    </tr>
+    <tr>
+      <td>no. films released.L1</td>
+      <td>-0.0181</td>
+      <td>0.043</td>
+      <td>0.673</td>
+      <td>-0.10238</td>
+      <td>0.06618</td>
+    </tr>
+    <tr>
+      <td>no. films released.L2</td>
+      <td>-0.0559</td>
+      <td>0.043</td>
+      <td>0.194</td>
+      <td>-0.14018</td>
+      <td>0.02838</td>
+    </tr>
+    <tr>
+      <td>no. films released.L3</td>
+      <td>-0.0054</td>
+      <td>0.043</td>
+      <td>0.901</td>
+      <td>-0.08968</td>
+      <td>0.07888</td>
+    </tr>
+    <tr>
+      <td>no. films released.L4</td>
+      <td>-0.1242</td>
+      <td>0.043</td>
+      <td>0.004</td>
+      <td>-0.20848</td>
+      <td>-0.03992</td>
+    </tr>
+  </tbody>
+</table>
