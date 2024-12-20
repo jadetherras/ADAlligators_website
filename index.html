@@ -311,21 +311,44 @@ For this, we extract the ten most represented categories in both groups. <br/>
     <span class="slider"></span>
   </label>
 
-  <div class="graph-group" id="group3">
-    <div class="violent">
-      <div class="flourish-embed flourish-chart" data-src="visualisation/20880472"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20880472/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
-      <div class="flourish-embed flourish-chart" data-src="visualisation/20880560"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20880560/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
- </div>
+  <div class="graph-group" id="group3" style="display: block;">
+    <div class="violent" style="margin-bottom: 20px;">
+      <div style="float: left; width: 48%;margin-top: 40px;" class="flourish-embed flourish-chart" data-src="visualisation/20880472">
+        <script src="https://public.flourish.studio/resources/embed.js"></script>
+        <noscript>
+          <img src="https://public.flourish.studio/visualisation/20880472/thumbnail" width="100%" alt="chart visualization" />
+        </noscript>
+      </div>
+      <div style="float: right; width: 48%;" class="flourish-embed flourish-chart" data-src="visualisation/20880560">
+        <script src="https://public.flourish.studio/resources/embed.js"></script>
+        <noscript>
+          <img src="https://public.flourish.studio/visualisation/20880560/thumbnail" width="100%" alt="chart visualization" />
+        </noscript>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
 
-    <div class="peaceful">
-      <div class="flourish-embed flourish-chart" data-src="visualisation/20880573"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20880573/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
-      <div class="flourish-embed flourish-chart" data-src="visualisation/20880579"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20880579/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+    <div class="peaceful " style="margin-bottom: 20px;">
+      <div style="float: left; width: 48%;margin-top: 40px;" class="flourish-embed flourish-chart" data-src="visualisation/20880573">
+        <script src="https://public.flourish.studio/resources/embed.js"></script>
+        <noscript>
+          <img src="https://public.flourish.studio/visualisation/20880573/thumbnail" width="100%" alt="chart visualization" />
+        </noscript>
+      </div>
+      <div style="float: right; width: 48%;" class="flourish-embed flourish-chart" data-src="visualisation/20880579">
+        <script src="https://public.flourish.studio/resources/embed.js"></script>
+        <noscript>
+          <img src="https://public.flourish.studio/visualisation/20880579/thumbnail" width="100%" alt="chart visualization" />
+        </noscript>
+      </div>
+      <div style="clear: both;"></div>
     </div>
   </div>
 </div>
 
-<h4>A look into violent movies</h4>
 
+
+<h4>A look into violent movies</h4>
 Nice ! Now that we have violent movies, we can perform some analysis on them. <br/>
 What are the main genres of violent and non violent movies ? 
 
@@ -371,6 +394,24 @@ However, some genres are present in the two lists. This is expected, because som
 </div>
 
 This analysis is limited. A lot of genre here are really "niche" but we can still see a clear tendency. For violent movies, we have genres such as psychological horror, wars or hardcore pornography. For non-violent movies we have travel, children's, education, fitness or journalism...
+
+<div class="GraphContainer">
+  <label class="switch">
+    <input type="checkbox" class="graph-toggle" data-target="group4">
+    <span class="slider"></span>
+  </label>
+
+  <div class="graph-group" id="group4">
+    <div class="violent">
+      <div class="flourish-embed flourish-word-cloud" data-src="visualisation/20790812"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20790812/thumbnail" width="100%" alt="word-cloud visualization" /></noscript></div>
+   </div>
+
+    <div class="peaceful">
+      <div class="flourish-embed flourish-word-cloud" data-src="visualisation/20790986"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20790986/thumbnail" width="100%" alt="word-cloud visualization" /></noscript></div>
+    </div>
+  </div>
+</div>
+
 <h4>What does time say ?</h4>
 
 It is time to try to answers to our first question : are violence movies more present today ?
