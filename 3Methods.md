@@ -269,7 +269,9 @@ ARDL_model = ARDL(
     </ul>
 </details>
 
+
 <h3>Final ARDL Model</h3>
+
 
 <li><b>Final model: z-scores for violence offenses + normalized box office revenues:</b> In this final approach, we compute the z-score for the violence offenses and normalize the box office revenues as in approach 3.
     <ul>
