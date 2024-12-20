@@ -130,5 +130,89 @@ To solve these problems, we decided to use the Empath model in combination with 
 We lemmatize, remove the stop-words and then look at the categories most present in each summary. This allows us also to evaluate the correctness of the LLM: we make sure that the categories most represented in violent movies are indeed violent ones and vice-versa. 
 </p>
 
-<h1>Auto-regressive distributed lack model</h1>
+<h1>Auto-regressive distributed lag model</h1>
+
+<p>With the data on violence in movies and real-life violence cleaned and matched, we can start the correlation analysis.</p>
+
+<p>First, we need to set up the linear regression model. Since we want to analyze if there is a correlation between violent movies and real-world violence, we naturally have to include an independent variable that captures the violence in movies as good as possible. Simply counting the number of violent movies released in a certain time span does not seem to capture it sufficiently: if there are a lot of violent movies released but nobody watches them, we cannot assume that it has a significant impact on society. Thus, we take the box office revenue of violent movies as the main independent variable for movie violence in our model. A low box office revenue of a violent movie captures the fact that only a small part of the society could have been influenced by this movie, inversely for a high box office revenue. For reasons of exhaustiveness, however, we also include the simple count of violent movie releases, although we do not expect this variable to have a significant coefficient.</p>
+
+<p>Of course, the box office revenue of violent movies and the count of violent movie releases cannot be the only independent variables in the model since there might be innumerable other confounding factors that have an influence on real-world violence. A “standard” linear regression model thus does not seem to satisfy our needs.</p>
+
+<p>A very important aspect of our model is the time step: due to the high number of possible confounding factors, it naturally is very difficult to trace peaks in violence back to specific violent movies. Moreover, the violence level averaged over an entire year might not provide interesting details as it is comparably stable from one year to another. Thus, we need to aim for a very short timestep: Our answer to this is a timestep of one week. This means that we analyze our available data based on the week it was generated, i.e. how the violent movies of this week influenced the real-world violence of this week. The specific date of each datapoint in the datasets allows us to use such a fine time resolution.</p>
+
+<p>Yet, this model still does not seem to capture the “nature” of real-world violence sufficiently. The assumption that the violent movies of this week have an instantaneous effect on the real-world violence of the same week seems rather unconvincing. The solution to this problem is called the auto-regressive distributed lag model. These models consist of two parts:</p>
+
+<ul>
+    <li><b>The auto-regressive part:</b> Taking into account that the dependent variable (real-world violence) of past time steps is included in the model.</li>
+    <li><b>The distributed lag part:</b> Taking into account that also past time steps of the independent variable (box office revenues of violent movies) are included in the model.</li>
+</ul>
+
+<p>The optimal lag for both parts, i.e., how many previous time steps are included in the model, is found using the <code>ardl_select_order</code> function from the Statsmodels module. This function needs a value for the maximum lag allowed as input. For this, we set a maximum lag of 6 timesteps for both lags. This ensures a good balance between exhaustiveness and statistical robustness and moreover reflects the fact that in general movies make most of their profit during the “opening window” of the first 4-6 weeks after release (source: <a href="https://www.boxofficemojo.com/chart/top_opening_weekend/">Box Office Mojo</a>).</p>
+
+<p>Lastly, we account for time-specific real-world violence levels with time-fixed effects. Due to the limited data available after filtering and cleaning, we chose biweekly time-fixed effects, i.e., additional constant factors that capture time-specific real-world violence levels that are not explained by the violent movie effects.</p>
+
+<h2>Final Model Formula</h2>
+
+<p>The final model is thus an auto-regressive distributed lag model with time fixed effects, described by the following formula:</p>
+
+<p class="formula">V<sub>t</sub> = α + ∑<sub>i=t-1</sub><sup>t-〖lag〗<sub>ar</sub></sup> β<sub>i</sub> ∙ V<sub>i</sub> + ∑<sub>j=t</sub><sup>t-〖lag〗<sub>d</sub></sup> γ<sub>j</sub> ∙ X<sub>j</sub> + ∑<sub>k=t</sub><sup>t-〖lag〗<sub>d</sub></sup> δ<sub>k</sub> ∙ W<sub>k</sub> + ∑<sub>l=1</sub><sup>N/2</sup> ε<sub>l</sub> ∙ T<sub>l</sub></p>
+
+<h3>Where:</h3>
+<ul>
+    <li><b>V<sub>t</sub>:</b> Endogenous variable: real-world violence value in week t.</li>
+    <li><b>α:</b> Constant term.</li>
+    <li><b>β<sub>i</sub>:</b> Coefficients for the lagged real-world violence values.</li>
+    <li><b>V<sub>i</sub>:</b> Endogenous variable: real-world violence value in week i.</li>
+    <li><b>〖lag〗<sub>ar</sub>:</b> Optimal lag for auto-regressive part.</li>
+    <li><b>γ<sub>j</sub>:</b> Coefficients for the lagged movie violence values.</li>
+    <li><b>X<sub>j</sub>:</b> Exogenous variable: box office revenue of violent movies in week j.</li>
+    <li><b>〖lag〗<sub>d</sub>:</b> Optimal lag for distributed lag part.</li>
+    <li><b>δ<sub>k</sub>:</b> Coefficient for the lagged count of violent movies.</li>
+    <li><b>W<sub>k</sub>:</b> Exogenous variable: count of violent movie releases in week k.</li>
+    <li><b>ε<sub>l</sub>:</b> Coefficients for the biweekly time-fixed effects.</li>
+    <li><b>T<sub>l</sub>:</b> Time-fixed effect of biweek l.</li>
+    <li><b>N:</b> Total number of weeks in the data.</li>
+</ul>
+
+<h2>Model Implementation</h2>
+
+<p>The model is built in the code using the ARDL class of the Statsmodels module in the following way:</p>
+
+<p><i>We rerun the select_order function each time we apply the ARDL model to new data. Thus, we ensure to always use the optimal lag values for each dataset provided to the function.</i></p>
+
+<h3>Intermediate ARDL Models</h3>
+
+<p>We tried different ways of standardizing/normalizing the exogenous and endogenous variables before applying the model on them. We describe all approaches below and present the corresponding results for the coefficients. Since the purpose of the time-fixed effects in our model is purely to purge the exogenous variable from time-fixed confounding factors, we do not include their coefficients in the results here. Due to the high number of time-fixed effect factors (one for every two weeks in the data), this would also not be an efficient use of space on this page. If interested, you can analyze them using the code provided in the <i>results.ipynb</i>.</p>
+
+<h3>Approaches:</h3>
+
+<ul>
+    <li><b>Naïve approach:</b> In the first approach, we do not normalize and use the following values:</li>
+    <ul>
+        <li>X<sub>j</sub>: Sum of box office revenues of violent movies in week j</li>
+        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
+        <li>V<sub>i</sub>: Number of all criminal offenses registered in week i</li>
+    </ul>
+
+    <li><b>Violence offense ratios:</b> In this approach, we normalize the real-world violence but keep the box office revenues as they are.</li>
+    <ul>
+        <li>X<sub>j</sub>: Sum of box office revenues of violent movies in week j</li>
+        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
+        <li>V<sub>i</sub>: Number of all criminal offenses registered in week i divided by the number of all criminal offenses registered in that year</li>
+    </ul>
+
+    <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.</li>
+    <ul>
+        <li>X<sub>j</sub>: Fill NaN values of box office revenues with median, divide all values by the median, then sum up these values for the violent movies in week j</li>
+        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
+        <li>V<sub>i</sub>: Number of all criminal offenses registered in week i</li>
+    </ul>
+
+    <li><b>Z-score for violence offenses:</b> In this approach, we compute the z-score for the violence offenses but keep the box office revenues as they are.</li>
+    <ul>
+        <li>X<sub>j</sub>: Sum of box office revenues of violent movies in week j</li>
+        <li>W<sub>k</sub>: Count of violent movie releases in week k</li>
+        <li>V<sub>i</sub>: Z-score of the offense counts for each category of offense (e.g., Assault Offenses, Robbery, etc.) using a rolling window of the same size as the maximum auto-regressive lag of the ARDL model.</li>
+    </ul>
+</ul>
  
