@@ -230,6 +230,9 @@ ARDL_model = ARDL(
 
 <details>
     <summary>Other intermediate ARDL models...(if interested, click here)</summary>
+
+    <p><b>Baseline: in all of the following models, we could not detect a significant correlation between violent movies in real-world violence.</b></p>
+
     <ul>    
         <li><b>Violence offense ratios:</b> In this approach, we normalize the real-world violence but keep the box office revenues as they are.
             <ul>
