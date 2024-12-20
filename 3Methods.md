@@ -242,8 +242,6 @@ ARDL_model = ARDL(
         <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
         </p></i>
 
-
-
         <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.
             <ul>
                 <li><b>\( X_j \):</b> Fill NaN values of box office revenues with the median, divide all values by the median, then sum up these values for the violent movies in week \( j \)</li>
