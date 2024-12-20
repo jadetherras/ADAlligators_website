@@ -157,6 +157,15 @@ We lemmatize, remove the stop-words and then look at the categories most present
 <p>The final model is thus an auto-regressive distributed lag model with time fixed effects, described by the following formula:</p>
 
 <p class="formula">
+    \[
+    V_t = \alpha + \sum_{i=t-1}^{t-\text{lag}_{\text{ar}}} \beta_i \cdot V_i + 
+    \sum_{j=t}^{t-\text{lag}_{\text{d}}} \gamma_j \cdot X_j + 
+    \sum_{k=t}^{t-\text{lag}_{\text{d}}} \delta_k \cdot W_k + 
+    \sum_{l=1}^{N/2} \epsilon_l \cdot T_l
+    \]
+</p>
+
+<p class="formula">
     V<sub>t</sub> = α + 
     ∑<sub>i=t-1</sub><sup>t-lag<sub>ar</sub></sup> β<sub>i</sub>∙V<sub>i</sub> + 
     ∑<sub>j=t</sub><sup>t-lag<sub>d</sub></sup> γ<sub>j</sub>∙X<sub>j</sub> + 
