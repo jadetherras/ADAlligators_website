@@ -239,6 +239,9 @@ ARDL_model = ARDL(
             </ul>
         </li>
 
+        <i><p> If interested in the exact coefficients of this model, please have a look at our results.ipynb file.
+        </p></i>
+
 
 
         <li><b>Normalized box office revenues:</b> In this approach, we normalize the box office revenues for violent films but keep the violence offense counts as they are.
