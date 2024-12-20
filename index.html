@@ -476,25 +476,22 @@ We also observe an oscillation between periods with relatively high or low numbe
 For example, the ratio drops around 1917, 1921, 1929, 1937. More recently, there is a drop in 1979 and a spike in 1981. Outliers at the border are due to the low number of movie data.
 </p>
 
-<p>
-This was for the yearly trend, but within a year, is there a pattern ? </p>
+<p> This was for the yearly trend, but within a year, is there a pattern ? </p>
+
 <div class="flourish-embed flourish-chart" data-src="visualisation/20791318"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20791318/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 
 <p>
-  Similarly, the violent movie trend follows the total movie trend. In general, more movies are released at the beginning of September (the beginning of the academic year !) and at the end and beginning of the year (for Christmas and to start the New Year!).
-  Less movies are released during the summer. Do people watch movies during hot holidays ?
+  The plot above shows weekly trends in movies release by combining the data from all years. The trend of violent movies release follows the trend of total movies released. In general, more movies are released at the beginning of September (the beginning of the academic year!) and at the end and beginning of the year (for Christmas and to start the New Year!).
+  Less movies are released during the summer. Do people watch movies during hot holidays?
   Additionally, the ratio of violent movies is constant across the weeks.
 </p>
 
+<div class="flourish-embed flourish-chart" data-src="visualisation/20790742"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20790742/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 <p>
-  To end this analysis, you can watch the distribution of violent movies released and total movies released within the years !
+  To achieve a more granular vision, we plot the weekly releases by year from 1893 to 2018. No particular trend is to be seen. We only observe, once again, that movies are produced in bigger quantity nowadays.  
 </p>
 
-<div class="flourish-embed flourish-chart" data-src="visualisation/20790742"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20790742/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 <h4>Define a metric : Box office revenue </h4>
-
-<div class="flourish-embed flourish-scatter" data-src="visualisation/20872966"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20872966/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
-<div class="flourish-embed flourish-chart" data-src="visualisation/20872334"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20872334/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 <p>
   "In order to run a meaningful correlation analysis of violence in films on real-world violence, you need to think of your independent variable as a <i>treatment</i>", said Ada.
   For this, our classification of films in violent and peaceful comes in handy! However, this was only the first step. We need more information about the movies that we classified as violent! 
@@ -519,6 +516,20 @@ This was for the yearly trend, but within a year, is there a pattern ? </p>
 <p>
   "Of course I can provide you the box office revenues of all your films in the dataset! Let me just crunch some data.", said Dexter, whilst turning on some heavy-metal music and disappeared behind his computer. 
   After 5 minutes, he claps his hands and says "All done, folks! It's all in the CMU dataset." <br/>
+</p>
+
+<p>
+  "Look at these plots", says Dexter, pointing at his screen. <br/>
+  Firstly, in the first plot you can see the box office of all movies released in a year: violent and total. We notice immediately that the medians are extremely close between these two groups, for all years, and that the confidence intervals overlap.
+  We are reassured, people don't watch violent movies more than peaceful movies. <br/> 
+  Similarly as before, we want to see granuarly how the box office evolves per week, for every year. However, we just use data from 1992 to 2012 (due to floods in Dexter's office, or to CMU datasets limitations). <br/>
+  One interesting fact is that movies released between week 25 and 27 tend to reach higher box offices on average. Note that we saw before that less movies are released in this period. Therefore, we conclude that the box office is a better proxi for movie popularity compared to the simple count of movies released. 
+</p>
+
+<div class="flourish-embed flourish-scatter" data-src="visualisation/20872966"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20872966/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>
+<div class="flourish-embed flourish-chart" data-src="visualisation/20872334"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20872334/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+
+<p>
   Full of motivation, we continue our analysis: We filter the CMU dataset to only include the movies we classified as violent and use the release date to extract the week and the year in which the film was released. <br/>
   For the explanation about the weekly time window, please see in the <div class="hover-container">
     Models & Methods.
@@ -532,8 +543,8 @@ This was for the yearly trend, but within a year, is there a pattern ? </p>
         </div>
       </a>
     </div>
-    Counting the number of violent movie releases as well as summing up the box office revenues of all violent movies per week thus gives us the final dataframe for the violent movie side. 
-    We now have those values for every week in the time span 1901 - 2018.
+    Now that we are sure about all of this, we can create the final dataframe for our analysis model. We count the number of violent movie releases and we sum up the box office revenues of all violent movies per week. This gives us the final dataframe for the violent movies. 
+    We now have the values for every week in the time span 1901 - 2018 (see the plot below).
 </p>
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/20873699"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20873699/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
